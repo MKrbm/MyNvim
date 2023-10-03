@@ -2,7 +2,6 @@ return {
 
   "nvim-lua/plenary.nvim",
 
-
   {
     "folke/which-key.nvim",
     keys = { "<leader>", '"', "'", "`", "c", "v", "g" },
@@ -11,19 +10,17 @@ return {
       vim.o.timeoutlen = 600
     end,
     config = function(_, opts)
-      require("which-key").setup(
-        {
-          popup_mappings = {
-            scroll_down = "<c-e>",
-            scroll_up = "<c-y>",
-          },
-          triggers_blacklist = {
-            n = {"m"},
-            i = { "j", "k" },
-            v = { "j", "k" },
-          },
-        }
-      )
+      require("which-key").setup({
+        popup_mappings = {
+          scroll_down = "<c-e>",
+          scroll_up = "<c-y>",
+        },
+        triggers_blacklist = {
+          n = { "m" },
+          i = { "j", "k" },
+          v = { "j", "k" },
+        },
+      })
     end,
   },
 
@@ -45,7 +42,6 @@ return {
     end,
   },
 
-
   -- cmdline tools and lsp servers
   {
 
@@ -64,12 +60,12 @@ return {
       {
         "jose-elias-alvarez/null-ls.nvim",
         config = function()
-          require "plugins.configs.null-ls"
+          require("plugins.configs.null-ls")
         end,
       },
     },
     config = function()
-      require "plugins.configs.lspconfig"
+      require("plugins.configs.lspconfig")
     end,
   },
 
@@ -78,7 +74,7 @@ return {
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
     opts = function()
-      return require "plugins.configs.treesitter"
+      return require("plugins.configs.treesitter")
     end,
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
@@ -93,7 +89,7 @@ return {
       {
         "HiPhish/rainbow-delimiters.nvim",
         config = function()
-          require "rainbow-delimiters.setup" {
+          require("rainbow-delimiters.setup")({
             highlight = {
               "rainbow1",
               "rainbow2",
@@ -104,7 +100,7 @@ return {
               "rainbow7",
             },
             blacklist = {},
-          }
+          })
         end,
       },
       -- {
@@ -133,17 +129,17 @@ return {
           "SessionLoadFromFile",
           "SessionDelete",
         },
-        config = require "plugins.configs.persisted",
+        config = require("plugins.configs.persisted"),
       },
     },
     cmd = "Telescope",
     opts = function()
-      return require "plugins.configs.telescope"
+      return require("plugins.configs.telescope")
     end,
     config = function(_, opts)
-      require("telescope").load_extension "persisted"
-      require("telescope").load_extension "harpoon"
-      local telescope = require "telescope"
+      require("telescope").load_extension("persisted")
+      require("telescope").load_extension("harpoon")
+      local telescope = require("telescope")
       telescope.setup(opts)
     end,
   },
@@ -153,6 +149,7 @@ return {
     version = "2.20.8",
   },
 
+  "nvim-tree/nvim-web-devicons",
   -- {
   --   'akinsho/bufferline.nvim',
   --   lazy = false,
@@ -180,7 +177,7 @@ return {
     cmd = { "UndotreeToggle" },
     config = function()
       vim.g.undotree_WindowLayout = 2
-    end
+    end,
   },
 
   {
@@ -202,7 +199,7 @@ return {
     "rhysd/clever-f.vim",
     lazy = true,
     event = { "CursorHold", "CursorHoldI" },
-    config = require "plugins.configs.clever-f",
+    config = require("plugins.configs.clever-f"),
   },
 
   {
@@ -212,17 +209,17 @@ return {
       return {
         options = {
           -- theme = "everforest",
-          theme = "ayu_dark"
-        }
+          theme = "ayu_dark",
+        },
       }
     end,
-    config = function(_,opts)
+    config = function(_, opts)
       require("lualine").setup(opts)
     end,
   },
   {
     "ThePrimeagen/harpoon",
-    keys = require("config.harpoon")
+    keys = require("config.harpoon"),
   },
 
   {
@@ -238,15 +235,15 @@ return {
           require("luasnip").config.set_config(opts)
           -- snipmate format
           require("luasnip.loaders.from_snipmate").load()
-          require("luasnip.loaders.from_snipmate").lazy_load { paths = vim.g.snipmate_snippets_path or "" }
+          require("luasnip.loaders.from_snipmate").lazy_load({ paths = vim.g.snipmate_snippets_path or "" })
           -- lua format
           require("luasnip.loaders.from_lua").load()
-          require("luasnip.loaders.from_lua").lazy_load { paths = vim.g.lua_snippets_path or "" }
+          require("luasnip.loaders.from_lua").lazy_load({ paths = vim.g.lua_snippets_path or "" })
           vim.api.nvim_create_autocmd("InsertLeave", {
             callback = function()
               if
-                require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
-                and not require("luasnip").session.jump_active
+                  require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+                  and not require("luasnip").session.jump_active
               then
                 require("luasnip").unlink_current()
               end
@@ -272,7 +269,7 @@ return {
       },
     },
     opts = function()
-      return require "plugins.configs.cmp"
+      return require("plugins.configs.cmp")
     end,
     config = function(_, opts)
       require("cmp").setup(opts)
@@ -284,7 +281,7 @@ return {
     lazy = true,
     cmd = "Copilot",
     event = "InsertEnter",
-    config = require "plugins.configs.copilot",
+    config = require("plugins.configs.copilot"),
   },
 
   { "tpope/vim-surround", lazy = false },
@@ -296,12 +293,12 @@ return {
     opts = {
       view = {
         default = {
-          layout = "diff2_vertical"
+          layout = "diff2_vertical",
         },
         merge_tool = {
-          layout = "diff3_mixed"
-        }
-      }
+          layout = "diff3_mixed",
+        },
+      },
     },
   },
 
@@ -309,7 +306,7 @@ return {
     "chentoast/marks.nvim",
     lazy = false,
     config = function()
-      require("marks").setup {
+      require("marks").setup({
         mappings = {
           set_next = "m,",
           next = "m]",
@@ -317,7 +314,7 @@ return {
           set_bookmark0 = "m0",
           prev = false, -- pass false to disable only this default mapping
         },
-      }
+      })
     end,
   },
 
@@ -325,11 +322,11 @@ return {
     "phaazon/hop.nvim",
     lazy = false,
     config = function()
-      require("hop").setup {
+      require("hop").setup({
         case_insensitive = false,
         char2_fallback_key = "<CR>",
         quit_key = "<Esc>",
-      }
+      })
     end,
   },
 }

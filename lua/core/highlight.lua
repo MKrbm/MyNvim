@@ -1,5 +1,32 @@
 local M = {}
 
+local set_cs = function(colorscheme)
+  M.hl.NormalNC = {
+    bg = colorscheme.NormalNC,
+  }
+
+  M.hl.Normal = {
+    bg = colorscheme.Normal,
+  }
+
+  M.hl.CursorLine = {
+    bg = colorscheme.NormalNC,
+  }
+end
+
+local everforest = {
+  NormalNC = "#2e383c",
+  Normal = "#272e33",
+}
+
+local tokyonight = {
+  NormalNC = "#24283b",
+  Normal = "#1f2335",
+}
+
+
+print(vim.inspect(M))
+
 local set_hl_group = function(group, styles)
   vim.api.nvim_set_hl(0, group, styles)
 end
@@ -30,12 +57,9 @@ M.hl = {
   --   bg = "pink",
   --   fg = "pink",
   -- },
-  CursorColumn = {
-    bg = "red",
-  },
-  CursorLine = {
-    bg = "#2e383c",
-  },
+  -- CursorColumn = {
+  --   bg = "red",
+  -- },
   -- SpellBad = {
   --   undercurl = true,
   --   -- cterm = ""
@@ -71,16 +95,6 @@ M.hl = {
   -- },
   --
 
-  NormalNC = {
-    bg = "#2e383c",
-    fg = "",
-    sp = "",
-  },
-  Normal = {
-    bg = "#272e33",
-    fg = "",
-    sp = "",
-  },
 
   -- TermCorsorNC = {
   --   bg = "pink",
@@ -103,5 +117,7 @@ M.hl = {
   -- GlanceListNormal = { bg = "black2" },
 }
 
+-- set_cs(everforest)
+set_cs(tokyonight)
 
 return M

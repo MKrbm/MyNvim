@@ -107,10 +107,10 @@ return {
           }
         end,
       },
-      {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        lazy = false,
-      },
+      -- {
+      --   "nvim-treesitter/nvim-treesitter-textobjects",
+      --   lazy = false,
+      -- },
     },
   },
 
@@ -211,7 +211,8 @@ return {
     opts = function()
       return {
         options = {
-          theme = "everforest",
+          -- theme = "everforest",
+          theme = "ayu_dark"
         }
       }
     end,

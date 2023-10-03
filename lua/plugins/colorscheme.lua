@@ -27,9 +27,9 @@ return {
     "LazyVim/LazyVim",
     lazy = false,
 		opts = {
-			colorscheme = "everforest",
+			-- colorscheme = "everforest",
 			-- colorscheme = "nordfox",
-      -- colorscheme = "tokyonight",
+      colorscheme = "tokyonight",
       checker = {
         enabled = false,
       }

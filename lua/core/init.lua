@@ -9,6 +9,7 @@ g.mapleader = " "
 
 -- options	
 
+opt.shell = "/bin/bash"
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
 -- opt.clipboard = "unnamedplus" -- copy paste automatically to system clipboard

@@ -3,10 +3,12 @@ local M = {}
 local set_cs = function(colorscheme)
   M.hl.NormalNC = {
     bg = colorscheme.NormalNC,
+    fg = "white"
   }
 
   M.hl.Normal = {
     bg = colorscheme.Normal,
+    fg = "white"
   }
 
   M.hl.CursorLine = {

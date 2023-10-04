@@ -61,6 +61,7 @@ return {
           require("mason").setup({
             ensure_installed = {
               "prettier",
+              "stylua",
             },
           })
         end,
@@ -337,5 +338,67 @@ return {
         quit_key = "<Esc>",
       })
     end,
+  },
+
+  {
+    "akinsho/toggleterm.nvim",
+    lazy = true,
+    cmd = {
+      "ToggleTerm",
+      "ToggleTermSetName",
+      "ToggleTermToggleAll",
+      "ToggleTermSendVisualLines",
+      "ToggleTermSendCurrentLine",
+      "ToggleTermSendVisualSelection",
+    },
+    opts = {
+      -- size can be a number or function which is passed the current terminal
+      size = function(term)
+        if term.direction == "horizontal" then
+          print("Im in horizontal")
+          return 20
+        elseif term.direction == "vertical" then
+          print("Im in vertical")
+          return vim.o.columns * 0.40
+        end
+      end,
+      on_open = function()
+        -- Prevent infinite calls from freezing neovim.
+        -- Only set these options specific to this terminal buffer.
+        vim.api.nvim_set_option_value("foldmethod", "manual", { scope = "local" })
+        vim.api.nvim_set_option_value("foldexpr", "0", { scope = "local" })
+      end,
+      highlights = {
+        Normal = {
+          guifg = "red",
+          guibg = "blue",
+        },
+        NormalFloat = {
+          link = "NormalNC",
+        },
+        FloatBorder = {
+          link = "NormalNC"
+        },
+      },
+      open_mapping = false, -- [[<c-\>]],
+      hide_numbers = true, -- hide the number column in toggleterm buffers
+      shade_filetypes = {},
+      shade_terminals = false,
+      shading_factor = "1", -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
+      start_in_insert = true,
+      persist_mode = false,
+      insert_mappings = true, -- whether or not the open mapping applies in insert mode
+      persist_size = true,
+      direction = "horizontal",
+      close_on_exit = true, -- close the terminal window when the process exits
+      shell = vim.o.shell, -- change the default shell
+      float_opts = {
+        -- see :h nvim_open_win for details on borders however
+        border = "curved",
+        width = 130,
+        height = 40,
+        zindex = 3,
+      },
+    },
   },
 }

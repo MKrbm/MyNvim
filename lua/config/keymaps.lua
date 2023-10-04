@@ -27,6 +27,7 @@ set_keymap("n", "<C-Left>", "<CMD>vertical resize -2<CR>", { desc = "Decrease wi
 set_keymap("n", "<A-j>", "<CMD>tabprevious<CR>", { desc = "Previous tab" })
 set_keymap("n", "<A-k>", "<CMD>tabnext<CR>", { desc = "Next tab" })
 set_keymap("n", "tn", "<CMD>tab split<CR>", { desc = "Open new tab" })
+set_keymap("n", "tc", "<CMD>tab close<CR>", { desc = "Close tab" })
 set_keymap("n", "<S-j>", "<CMD>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
 set_keymap("n", "<S-k>", "<CMD>BufferLineCycleNext<CR>", { desc = "Next buffer" })
 set_keymap("n", "\\k", "<S-k>", { desc = "Shifted up key binding" })
@@ -70,13 +71,19 @@ set_keymap("v", "<S-M-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 set_keymap("v", "<S-M-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- Terminal mode keybindings
-set_keymap("t", "<C-h>", "<C-x><C-w>h", { desc = "Move to left split" })
-set_keymap("t", "<C-l>", "<C-x><C-w>l", { desc = "Move to right split" })
-set_keymap("t", "<C-j>", "<C-x><C-w>j", { desc = "Move to bottom split" })
-set_keymap("t", "<C-k>", "<C-x><C-w>k", { desc = "Move to top split" })
-set_keymap("t", "<C-e>", "<C-x><C-e>", { desc = "Scroll up" })
-set_keymap("t", "<C-y>", "<C-x><C-y>", { desc = "Scroll down" })
+set_keymap("t", "<C-x>", "<C-\\><C-N>", { desc = "Escape terminal mode" })
+set_keymap("t", "<C-h>", "<C-x><C-w>h", { desc = "Move to left split" , remap = true})
+set_keymap("t", "<C-l>", "<C-x><C-w>l", { desc = "Move to right split" , remap = true})
+set_keymap("t", "<C-j>", "<C-x><C-w>j", { desc = "Move to bottom split" , remap = true})
+set_keymap("t", "<C-k>", "<C-x><C-w>k", { desc = "Move to top split" , remap = true})
+set_keymap("t", "<C-e>", "<C-x><C-e>", { desc = "Scroll up" , remap = true})
+set_keymap("t", "<C-y>", "<C-x><C-y>", { desc = "Scroll down" , remap = true})
+set_keymap("t", "<A-j>", "<CMD>tabprevious<CR>", { noremap = true, desc = "<CMD>tabprevious<CR>" })
+set_keymap("t", "<A-k>", "<CMD>tabnext<CR>", { noremap = true, desc = "<CMD>tabnext<CR>" })
 
+-- Window resizing
+set_keymap("n", "<C-Up>", "<CMD>resize +2<CR>", { desc = "Height up" })
+set_keymap("n", "<C-Down>", "<CMD>resize -2<CR>", { desc = "Height down" })
 -- Insert mode keybindings
 set_keymap("i", "<A-]>", "<C-t>", { desc = "Indent line" })
 set_keymap("i", "<A-[>", "<C-d>", { desc = "De-indent line" })
@@ -199,3 +206,11 @@ set_keymap("o", "gs", "<cmd> HopChar1MW <CR>", { silent = true, noremap = true, 
 --diffview
 set_keymap("n", "<leader>gd", "<CMD> DiffviewOpen <CR>",{ desc =  "Diffview open" })
 set_keymap("n", "<leader>gc", "<CMD> DiffviewClose <CR>",{ desc =  "Diffview close" })
+
+-- toggle term
+set_keymap("n", "<M-i>", "<CMD> ToggleTerm direction=float <CR>",{ desc =  "open float terminal" })
+set_keymap("t", "<M-i>", "<CMD> ToggleTerm direction=float <CR>",{ desc =  "open float terminal" })
+set_keymap("n", "<c-f>", "<CMD> ToggleTerm direction=horizontal <CR>",{ desc =  "open horizontal terminal" })
+set_keymap("t", "<c-f>", "<CMD> ToggleTerm direction=horizontal <CR>",{ desc =  "open horizontal terminal" })
+set_keymap("n", "\\v", "<CMD> ToggleTerm direction=vertical <CR>",{ desc =  "open vertical terminal" })
+set_keymap("t", "\\v", "<CMD> ToggleTerm direction=vertical <CR>",{ desc =  "open vertical terminal" })

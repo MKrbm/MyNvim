@@ -55,7 +55,16 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      "mason.nvim",
+      {
+        "mason.nvim",
+        config = function()
+          require("mason").setup({
+            ensure_installed = {
+              "prettier",
+            },
+          })
+        end,
+      },
       "williamboman/mason-lspconfig.nvim",
       {
         "jose-elias-alvarez/null-ls.nvim",

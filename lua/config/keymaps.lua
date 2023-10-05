@@ -208,9 +208,9 @@ set_keymap("n", "<leader>gd", "<CMD> DiffviewOpen <CR>",{ desc =  "Diffview open
 set_keymap("n", "<leader>gc", "<CMD> DiffviewClose <CR>",{ desc =  "Diffview close" })
 
 -- toggle term
-set_keymap("n", "<M-i>", "<CMD> ToggleTerm direction=float <CR>",{ desc =  "open float terminal" })
-set_keymap("t", "<M-i>", "<CMD> ToggleTerm direction=float <CR>",{ desc =  "open float terminal" })
-set_keymap("n", "<c-f>", "<CMD> ToggleTerm direction=horizontal <CR>",{ desc =  "open horizontal terminal" })
-set_keymap("t", "<c-f>", "<CMD> ToggleTerm direction=horizontal <CR>",{ desc =  "open horizontal terminal" })
-set_keymap("n", "\\v", "<CMD> ToggleTerm direction=vertical <CR>",{ desc =  "open vertical terminal" })
-set_keymap("t", "\\v", "<CMD> ToggleTerm direction=vertical <CR>",{ desc =  "open vertical terminal" })
+set_keymap("n", "<M-i>", "<CMD> 2ToggleTerm direction=float <CR>",{ desc =  "open float terminal" })
+set_keymap("t", "<M-i>", "<CMD> 2ToggleTerm direction=float <CR>",{ desc =  "open float terminal" })
+set_keymap("n", "<c-f>", "<CMD> 3ToggleTerm direction=horizontal <CR>",{ desc =  "open horizontal terminal" })
+set_keymap("t", "<c-f>", "<CMD> 3ToggleTerm direction=horizontal <CR>",{ desc =  "open horizontal terminal" })
+set_keymap("n", "\\v", "<CMD> 4ToggleTerm direction=vertical <CR>",{ desc =  "open vertical terminal" })
+set_keymap("t", "\\v", "<CMD> 4ToggleTerm direction=vertical <CR>",{ desc =  "open vertical terminal" })

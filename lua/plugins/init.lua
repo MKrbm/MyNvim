@@ -160,26 +160,6 @@ return {
   },
 
   "nvim-tree/nvim-web-devicons",
-  -- {
-  --   'akinsho/bufferline.nvim',
-  --   lazy = false,
-  --   version = "4.0.0",
-  --   dependencies = 'nvim-tree/nvim-web-devicons',
-  --   config = function(_, opts)
-  --     vim.opt.termguicolors = true
-  --     local bufferline = require('bufferline')
-  --     bufferline.setup({
-  --       options = {
-  --         style_preset = bufferline.style_preset.no_italic,
-  --         -- or you can combine these e.g.
-  --         style_preset = {
-  --           bufferline.style_preset.no_italic,
-  --           bufferline.style_preset.no_bold
-  --         },
-  --       }
-  --     })
-  --   end
-  -- },
 
   {
     "mbbill/undotree",
@@ -352,32 +332,29 @@ return {
       "ToggleTermSendVisualSelection",
     },
     opts = {
-      -- size can be a number or function which is passed the current terminal
       size = function(term)
         if term.direction == "horizontal" then
-          print("Im in horizontal")
-          return 20
+          return vim.o.lines * 0.25
         elseif term.direction == "vertical" then
           print("Im in vertical")
           return vim.o.columns * 0.40
         end
       end,
       on_open = function()
-        -- Prevent infinite calls from freezing neovim.
-        -- Only set these options specific to this terminal buffer.
         vim.api.nvim_set_option_value("foldmethod", "manual", { scope = "local" })
         vim.api.nvim_set_option_value("foldexpr", "0", { scope = "local" })
       end,
       highlights = {
         Normal = {
-          guifg = "red",
-          guibg = "blue",
+          guibg = "#1e222a"
         },
         NormalFloat = {
-          link = "NormalNC",
+          -- link = "NormalNC",
+          guibg = "#1e222a",
         },
         FloatBorder = {
           link = "NormalNC"
+          -- guibg = "#1e222a",
         },
       },
       open_mapping = false, -- [[<c-\>]],
@@ -395,8 +372,12 @@ return {
       float_opts = {
         -- see :h nvim_open_win for details on borders however
         border = "curved",
-        width = 130,
-        height = 40,
+        width = function()
+          return math.floor(vim.o.columns * 0.8)
+        end,
+        height = function()
+          return math.floor(vim.o.lines * 0.8)
+        end,
         zindex = 3,
       },
     },

@@ -6,7 +6,6 @@ local opt = vim.opt
 -- g.loaded_netrwPlugin = 1
 g.mapleader = " "
 
-
 -- options	
 
 opt.shell = "/bin/bash"
@@ -41,7 +40,7 @@ opt.splitright = true
 opt.termguicolors = true
 opt.undofile = true
 opt.laststatus = 2
-
+opt.splitkeep = "screen"
 -- interval for writing swap file to disk, also used by gitsigns
 opt.updatetime = 250
 
@@ -63,7 +62,7 @@ vim.cmd [[
   autocmd FileType * setlocal formatoptions-=cro
 ]]
 
+vim.api.nvim_create_autocmd("TermOpen", {command = "setlocal nonu nornu signcolumn=no"})
 
 require("core.lazy")
-
 require("core.highlight").setup()

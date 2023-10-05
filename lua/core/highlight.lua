@@ -14,16 +14,23 @@ local set_cs = function(colorscheme)
   M.hl.CursorLine = {
     bg = colorscheme.NormalNC,
   }
+
+  M.hl.Terminal = {
+    bg = colorscheme.Terminal,
+    fg = "white",
+  }
 end
 
 local everforest = {
   NormalNC = "#2e383c",
   Normal = "#272e33",
+  Terminal = "#7a8478",
 }
 
 local tokyonight = {
   NormalNC = "#24283b",
   Normal = "#1f2335",
+  Terminal = "#1f2335",
 }
 
 
@@ -55,7 +62,7 @@ M.hl = {
   --   bold = true,
   -- },
   --
-  -- VertSplit = {
+  -- 222d40 = {
   --   bg = "pink",
   --   fg = "pink",
   -- },
@@ -67,6 +74,10 @@ M.hl = {
   --   -- cterm = ""
   -- },
   --
+  WinSeparator = {
+    fg = "#415270",
+    bg = "#415270",
+  },
   rainbow1 = {
     fg = "#ffadad",
   },

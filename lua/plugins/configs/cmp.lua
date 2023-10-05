@@ -21,7 +21,7 @@ local options = {
   window = {
     completion = {
       scrollbar = false,
-      winhighlight = "Normal:CmpNormal,FloatBorder:CmpFloatBorder,CursorLine:CursorLine,Search:None"
+      winhighlight = "Normal:CmpNormal,FloatBorder:CmpFloatBorder,CursorLine:CursorLine,Search:None,SignColumn:Terminal"
     },
     documentation = {
       border = border "CmpDocBorder",

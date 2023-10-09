@@ -1,5 +1,45 @@
 local g = vim.g
 local opt = vim.opt
+local global = require("core.global")
+
+local clipboard_config = function()
+	if global.is_mac then
+		vim.g.clipboard = {
+			name = "macOS-clipboard",
+			copy = { ["+"] = "pbcopy", ["*"] = "pbcopy" },
+			paste = { ["+"] = "pbpaste", ["*"] = "pbpaste" },
+			cache_enabled = 0,
+		}
+	elseif global.is_wsl then
+		vim.g.clipboard = {
+			name = "win32yank-wsl",
+			copy = {
+				["+"] = "win32yank.exe -i --crlf",
+				["*"] = "win32yank.exe -i --crlf",
+			},
+			paste = {
+				["+"] = "win32yank.exe -o --lf",
+				["*"] = "win32yank.exe -o --lf",
+			},
+			cache_enabled = 0,
+		}
+	end
+end
+
+local shell_config = function()
+	if global.is_windows then
+    print("windows are not supported")
+	end
+  if global.is_linux then
+    opt.shell = "/bin/bash"
+  end
+  if global.is_mac then
+    opt.shell = "/bin/zsh"
+  end
+end
+
+clipboard_config()
+shell_config()
 
 -- disable netrw at the very start of your init.lua
 -- g.loaded_netrw = 1
@@ -8,7 +48,7 @@ g.mapleader = " "
 
 -- options	
 
-opt.shell = "/bin/bash"
+-- opt.shell = "/bin/zsh"
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
 -- opt.clipboard = "unnamedplus" -- copy paste automatically to system clipboard

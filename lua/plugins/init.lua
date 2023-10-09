@@ -42,30 +42,36 @@ return {
     end,
   },
 
-  -- cmdline tools and lsp servers
   {
-
     "williamboman/mason.nvim",
-    cmd = "Mason",
+    -- cmd = "Mason",
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
-    build = ":MasonUpdate",
+    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
+    opts = {
+      ensure_installed = {
+        "prettier",
+        "stylua",
+        "deno",
+        "clang-format",
+        "black",
+        "flake8",
+      },
+    },
+    config = function(_, opts)
+      vim.api.nvim_create_user_command("MasonInstallAll", function()
+        print(vim.inspect(opts.ensure_installed))
+        vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
+      end, {})
+      vim.g.mason_binaries_list = opts.ensure_installed
+      require("mason").setup(opts)
+    end,
   },
 
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      {
-        "mason.nvim",
-        config = function()
-          require("mason").setup({
-            ensure_installed = {
-              "prettier",
-              "stylua",
-            },
-          })
-        end,
-      },
+      "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       {
         "jose-elias-alvarez/null-ls.nvim",
@@ -346,14 +352,14 @@ return {
       end,
       highlights = {
         Normal = {
-          guibg = "#1e222a"
+          guibg = "#1e222a",
         },
         NormalFloat = {
           -- link = "NormalNC",
           guibg = "#1e222a",
         },
         FloatBorder = {
-          link = "NormalNC"
+          link = "NormalNC",
           -- guibg = "#1e222a",
         },
       },

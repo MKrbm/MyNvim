@@ -1,11 +1,16 @@
 
 local options = {
-  ensure_installed = { "lua", "c", "cpp" },
+  ensure_installed = { "lua", "c", "cpp", "python"},
   highlight = {
     enable = true,
     use_languagetree = true,
+    disable = {
+      "cpp",
+      "c"
+    },
   },
   indent = { enable = false },
+
   -- textobjects = {
   --   move = {
   --     enable = true,

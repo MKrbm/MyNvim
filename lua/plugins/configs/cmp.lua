@@ -41,7 +41,7 @@ local options = {
     ["<C-y>"] = cmp.mapping.scroll_docs(3),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-d>"] = cmp.mapping.close(),
-    ["<c-k>"] = cmp.mapping.confirm {
+    ["<m-k>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     },

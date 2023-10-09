@@ -72,12 +72,12 @@ set_keymap("v", "<S-M-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- Terminal mode keybindings
 set_keymap("t", "<C-x>", "<C-\\><C-N>", { desc = "Escape terminal mode" })
-set_keymap("t", "<C-h>", "<C-x><C-w>h", { desc = "Move to left split" , remap = true})
-set_keymap("t", "<C-l>", "<C-x><C-w>l", { desc = "Move to right split" , remap = true})
-set_keymap("t", "<C-j>", "<C-x><C-w>j", { desc = "Move to bottom split" , remap = true})
-set_keymap("t", "<C-k>", "<C-x><C-w>k", { desc = "Move to top split" , remap = true})
-set_keymap("t", "<C-e>", "<C-x><C-e>", { desc = "Scroll up" , remap = true})
-set_keymap("t", "<C-y>", "<C-x><C-y>", { desc = "Scroll down" , remap = true})
+set_keymap("t", "<C-h>", "<C-x><C-w>h", { desc = "Move to left split", remap = true })
+set_keymap("t", "<C-l>", "<C-x><C-w>l", { desc = "Move to right split", remap = true })
+set_keymap("t", "<C-j>", "<C-x><C-w>j", { desc = "Move to bottom split", remap = true })
+set_keymap("t", "<C-k>", "<C-x><C-w>k", { desc = "Move to top split", remap = true })
+set_keymap("t", "<C-e>", "<C-x><C-e>", { desc = "Scroll up", remap = true })
+set_keymap("t", "<C-y>", "<C-x><C-y>", { desc = "Scroll down", remap = true })
 set_keymap("t", "<A-j>", "<CMD>tabprevious<CR>", { noremap = true, desc = "<CMD>tabprevious<CR>" })
 set_keymap("t", "<A-k>", "<CMD>tabnext<CR>", { noremap = true, desc = "<CMD>tabnext<CR>" })
 
@@ -167,7 +167,7 @@ set_keymap("n", "\\uh", "<CMD>UndotreeHide<CR>", { desc = "Undotree hide" })
 
 -- lsp
 set_keymap("n", "\\fm", function() vim.lsp.buf.format({ async = true }) end, { desc = "Undotree toggle" })
-set_keymap("n", "gd", function() vim.lsp.buf.definition() end , { desc = "LSP definition" })
+set_keymap("n", "gd", function() vim.lsp.buf.definition() end, { desc = "LSP definition" })
 set_keymap("n", "gD", function() vim.lsp.buf.declaration() end, { desc = "LSP declaration" })
 set_keymap("n", "gK", function() vim.lsp.buf.hover() end, { desc = "LSP hover" })
 set_keymap("n", "gI", function() vim.lsp.buf.implementation() end, { desc = "LSP implementation" })
@@ -176,13 +176,15 @@ set_keymap("n", "<leader>D", function() vim.lsp.buf.type_definition() end, { des
 -- set_keymap("n", "<leader>ra", function() require("nvchad.renamer").open() end, { desc = "LSP rename" })
 -- set_keymap("n", "<leader>ca", "<CMD>Lspsaga code_action<CR>", { desc = "LSP code action" })
 set_keymap("n", "gr", function() vim.lsp.buf.references() end, { desc = "LSP references" })
-set_keymap("n", "<leader>f", function() vim.diagnostic.open_float { border = "rounded" } end, { desc = "Floating diagnostic" })
+set_keymap("n", "<leader>f", function() vim.diagnostic.open_float { border = "rounded" } end,
+  { desc = "Floating diagnostic" })
 set_keymap("n", "[d", function() vim.diagnostic.goto_prev { float = { border = "rounded" } } end, { desc = "Goto prev" })
 set_keymap("n", "]d", function() vim.diagnostic.goto_next { float = { border = "rounded" } } end, { desc = "Goto next" })
 set_keymap("n", "<leader>q", function() vim.diagnostic.setloclist() end, { desc = "Diagnostic setloclist" })
 set_keymap("n", "<leader>wa", function() vim.lsp.buf.add_workspace_folder() end, { desc = "Add workspace folder" })
 set_keymap("n", "<leader>wr", function() vim.lsp.buf.remove_workspace_folder() end, { desc = "Remove workspace folder" })
-set_keymap("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, { desc = "List workspace folders" })
+set_keymap("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+  { desc = "List workspace folders" })
 
 -- nvim-hop for normal mode
 set_keymap("n", "G", "<cmd> HopPattern <CR>", { silent = true, noremap = true, desc = "nvim-hop char2" })
@@ -204,13 +206,13 @@ set_keymap("o", "gw", "<cmd> HopWordMW <CR>", { silent = true, noremap = true, d
 set_keymap("o", "gs", "<cmd> HopChar1MW <CR>", { silent = true, noremap = true, desc = "nvim-hop char1" })
 
 --diffview
-set_keymap("n", "<leader>gd", "<CMD> DiffviewOpen <CR>",{ desc =  "Diffview open" })
-set_keymap("n", "<leader>gc", "<CMD> DiffviewClose <CR>",{ desc =  "Diffview close" })
+set_keymap("n", "<leader>gd", "<CMD> DiffviewOpen <CR>", { desc = "Diffview open" })
+set_keymap("n", "<leader>gc", "<CMD> DiffviewClose <CR>", { desc = "Diffview close" })
 
 -- toggle term
-set_keymap("n", "<M-i>", "<CMD> 2ToggleTerm direction=float <CR>",{ desc =  "open float terminal" })
-set_keymap("t", "<M-i>", "<CMD> 2ToggleTerm direction=float <CR>",{ desc =  "open float terminal" })
-set_keymap("n", "<c-f>", "<CMD> 3ToggleTerm direction=horizontal <CR>",{ desc =  "open horizontal terminal" })
-set_keymap("t", "<c-f>", "<CMD> 3ToggleTerm direction=horizontal <CR>",{ desc =  "open horizontal terminal" })
-set_keymap("n", "\\v", "<CMD> 4ToggleTerm direction=vertical <CR>",{ desc =  "open vertical terminal" })
-set_keymap("t", "\\v", "<CMD> 4ToggleTerm direction=vertical <CR>",{ desc =  "open vertical terminal" })
+set_keymap("n", "<M-i>", "<CMD> ToggleTerm direction=float <CR>", { desc = "open float terminal" })
+set_keymap("t", "<M-i>", "<CMD> ToggleTerm direction=float <CR>", { desc = "open float terminal" })
+set_keymap("n", "<c-f>", "<CMD> 2ToggleTerm direction=horizontal <CR>", { desc = "open horizontal terminal" })
+set_keymap("t", "<c-f>", "<CMD> 2ToggleTerm direction=horizontal <CR>", { desc = "open horizontal terminal" })
+set_keymap("n", "\\v", "<CMD> 3ToggleTerm direction=vertical <CR>", { desc = "open vertical terminal" })
+set_keymap("t", "\\v", "<CMD> 3ToggleTerm direction=vertical <CR>", { desc = "open vertical terminal" })

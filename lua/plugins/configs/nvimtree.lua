@@ -10,6 +10,7 @@ local function my_on_attach(bufnr)
 
 	-- custom mappings
   vim.keymap.set("n", "<C-t>", api.tree.change_root_to_parent, opts "Up")
+  vim.keymap.set("n", "<C-e>", "<C-e>", opts "Scroll down") -- used to be open in one place
   vim.keymap.set("n", "?", api.tree.toggle_help, opts "Help")
   vim.keymap.set("n", "h", api.node.navigate.parent_close, opts "Close Directory")
   vim.keymap.set("n", "l", api.node.open.edit, opts "Open")
@@ -42,7 +43,7 @@ local options = {
     preserve_window_proportions = true,
   },
   git = {
-    enable = false,
+    enable = true,
     ignore = true,
   },
   filesystem_watchers = {
@@ -54,8 +55,8 @@ local options = {
     },
   },
   renderer = {
-    root_folder_label = ":.:s?.*?/..?",
-    highlight_git = false,
+    root_folder_label = false,
+    highlight_git = true,
     highlight_opened_files = "none",
 
     indent_markers = {
@@ -67,7 +68,7 @@ local options = {
         file = true,
         folder = true,
         folder_arrow = true,
-        git = false,
+        git = true,
       },
 
       glyphs = {

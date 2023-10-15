@@ -4,10 +4,10 @@ local options = {
   highlight = {
     enable = true,
     use_languagetree = true,
-    disable = {
-      "cpp",
-      "c"
-    },
+    -- disable = {
+    --   "cpp",
+    --   "c"
+    -- },
   },
   indent = { enable = false },
 

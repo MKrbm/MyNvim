@@ -18,7 +18,7 @@ M = {
         nowait = true,
       },
       {
-        "<S-j>",
+        "<S-k>",
         function()
           require("harpoon.ui").nav_prev()
         end,
@@ -26,7 +26,7 @@ M = {
         nowait = true,
       },
       {
-        "<S-k>",
+        "<S-j>",
         function()
           require("harpoon.ui").nav_next()
         end,

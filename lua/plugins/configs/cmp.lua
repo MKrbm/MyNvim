@@ -1,8 +1,8 @@
 local cmp = require "cmp"
 
-vim.api.nvim_set_hl(0, "CmpNormal", {bg ="#000001" , fg = "#000001" })
-vim.api.nvim_set_hl(0, "CmpFloatBorder", {bg ="red" , fg = "blue" })
-vim.api.nvim_set_hl(0, "CmpCursorLine", {bg ="pink" , fg = "yellow" })
+vim.api.nvim_set_hl(0, "CmpNormal", { bg = "#000001", fg = "#000001" })
+vim.api.nvim_set_hl(0, "CmpFloatBorder", { bg = "red", fg = "blue" })
+vim.api.nvim_set_hl(0, "CmpCursorLine", { bg = "pink", fg = "yellow" })
 
 local function border(hl_name)
   return {
@@ -41,7 +41,17 @@ local options = {
     ["<C-y>"] = cmp.mapping.scroll_docs(3),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-d>"] = cmp.mapping.close(),
-    ["<m-k>"] = cmp.mapping.confirm {
+    -- ["<C-i>"] = cmp.complete(),
+    ['<C-g>'] = function()
+      if cmp.visible_docs() then
+        cmp.close_docs()
+        print("close docs")
+      else
+        cmp.open_docs()
+        print("open docs")
+      end
+    end,
+    ["<Enter>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     },

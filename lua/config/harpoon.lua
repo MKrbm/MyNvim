@@ -10,6 +10,14 @@ M = {
         desc = "Find Plugin File",
       },
       {
+        "<S-h>",
+        function()
+          require("harpoon.ui").toggle_quick_menu()
+        end,
+        desc = "Find Plugin File",
+        nowait = true,
+      },
+      {
         "mm",
         function()
           require("harpoon.ui").toggle_quick_menu()

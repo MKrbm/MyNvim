@@ -258,3 +258,6 @@ set_keymap({'n', 'x', 'o'}, 'gk', "<Plug>(leap-backward-to)", { desc = "Select B
 -- set_keymap({'n', 'x', 'o'}, 'w', "<Plug>(leap-forward-till)", { desc = "Select Build type" } )
 -- set_keymap({'n', 'x', 'o'}, '<S-q>', "<Plug>(leap-backward-to)", { desc = "Select Build type" } )
 set_keymap({'n', 'x', 'o'}, 'gs', "<Plug>(leap-from-window)", { desc = "Select Build type" } )
+
+-- cmp
+set_keymap("i", '<C-i>', '<Cmd> lua require("cmp").complete()<CR>', { desc = "open complete" } )

@@ -9,7 +9,7 @@ local options = {
     --   "c"
     -- },
   },
-  indent = { enable = false },
+  indent = { enable = true },
 
   -- textobjects = {
   --   move = {

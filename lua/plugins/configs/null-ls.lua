@@ -1,4 +1,4 @@
-local null_ls = require "null-ls"
+local null_ls = require("null-ls")
 
 local b = null_ls.builtins
 
@@ -9,7 +9,7 @@ local sources = {
 
   -- webdev stuff
   b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
-  b.formatting.prettier.with {
+  b.formatting.prettier.with({
     filetypes = {
       "vue",
       "typescript",
@@ -23,7 +23,7 @@ local sources = {
       "sh",
       "markdown",
     },
-  },
+  }),
 
   -- Lua
   b.formatting.stylua,
@@ -36,9 +36,13 @@ local sources = {
   b.formatting.clang_format,
 
   -- python
-  b.formatting.black.with {
+  b.formatting.black.with({
     extra_args = { "--line-length=120" },
-  },
+  }),
+
+  -- Python
+  b.diagnostics.mypy,
+
   -- cpp
   -- b.formatting.clang_format.with {
   --   filetypes = { "c", "cpp" },
@@ -64,7 +68,7 @@ local sources = {
   --   },
 }
 
-null_ls.setup {
+null_ls.setup({
   debug = true,
   sources = sources,
-}
+})

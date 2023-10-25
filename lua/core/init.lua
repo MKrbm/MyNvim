@@ -54,8 +54,8 @@ opt.showmode = false
 -- opt.clipboard = "unnamedplus" -- copy paste automatically to system clipboard
 opt.cursorline = true
 
+opt.exrc = true
 -- Indenting
-opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
 opt.softtabstop = 2
@@ -89,6 +89,10 @@ opt.updatetime = 250
 opt.whichwrap:append "<>[]hl"
 
 g.mapleader = " "
+
+-- disable netrw at the very start of your init.lua
+vim.o.exrc = true
+vim.o.secure = true
 
 -- autocommand
 vim.api.nvim_exec([[

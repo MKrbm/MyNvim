@@ -10,7 +10,7 @@ M = {
         desc = "Find Plugin File",
       },
       {
-        "<S-h>",
+        "<S-m>",
         function()
           require("harpoon.ui").toggle_quick_menu()
         end,

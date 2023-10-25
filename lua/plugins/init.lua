@@ -337,7 +337,12 @@ return {
       --   relative_directions = true,
       --   modes = { "n", "x", "o" },
       -- })
-      -- require("leap").setup(opts)
+      require("leap").setup({
+        safe_labels = {
+          -- "a","s", "d","f","j","k","l","w","e","r","u","i","o","p","g","h","t","y","v","b","n","m","z","x","c","q", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+          -- "/", ",","."
+        },
+      })
     end,
   },
 

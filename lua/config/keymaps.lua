@@ -200,7 +200,7 @@ set_keymap("n", "gI", function() vim.lsp.buf.implementation() end, { desc = "LSP
 set_keymap("n", "<leader>ls", function() vim.lsp.buf.signature_help() end, { desc = "LSP signature help" })
 set_keymap("n", "<leader>D", function() vim.lsp.buf.type_definition() end, { desc = "LSP definition type" })
 -- set_keymap("n", "<leader>ra", function() require("nvchad.renamer").open() end, { desc = "LSP rename" })
--- set_keymap("n", "<leader>ca", "<CMD>Lspsaga code_action<CR>", { desc = "LSP code action" })
+set_keymap({"n", "v"}, "<leader>ca",function() vim.lsp.buf.code_action() end, { desc = "LSP code action" })
 set_keymap("n", "gr", function() vim.lsp.buf.references() end, { desc = "LSP references" })
 set_keymap("n", "<leader>se", function() vim.diagnostic.open_float { border = "rounded" } end,
   { desc = "show Floating diagnostic" })
@@ -253,8 +253,8 @@ set_keymap("n", "\\ct", "<CMD> CMakeSelectBuildTarget <CR>", { desc = "Select Bu
 set_keymap("n", "\\cb", "<CMD> CMakeSelectBuildType <CR>", { desc = "Select Build type" })
 
 -- leap
-set_keymap({'n', 'x', 'o'}, 'gj', "<Plug>(leap-forward-to)", { desc = "Select Build type" } )
-set_keymap({'n', 'x', 'o'}, 'gk', "<Plug>(leap-backward-to)", { desc = "Select Build type" } )
+set_keymap({'n', 'x', 'o'}, 'w', "<Plug>(leap-forward-to)", { desc = "Select Build type" } )
+set_keymap({'n', 'x', 'o'}, '<s-w>', "<Plug>(leap-backward-to)", { desc = "Select Build type" } )
 -- set_keymap({'n', 'x', 'o'}, 'w', "<Plug>(leap-forward-till)", { desc = "Select Build type" } )
 -- set_keymap({'n', 'x', 'o'}, '<S-q>', "<Plug>(leap-backward-to)", { desc = "Select Build type" } )
 set_keymap({'n', 'x', 'o'}, 'gs', "<Plug>(leap-from-window)", { desc = "Select Build type" } )

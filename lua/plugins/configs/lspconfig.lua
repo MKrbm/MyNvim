@@ -26,11 +26,11 @@ require("lspconfig").pylsp.setup({
     pylsp = {
       plugins = {
         -- Lint
-        -- mypy = {
-        --   enabled = true,
-        --   live_mode = false,
-        --   strict = true,
-        -- },
+        mypy = {
+          enabled = true,
+          live_mode = false,
+          strict = true,
+        },
         -- ruff = {
         --   enabled = true,
         --   select = {

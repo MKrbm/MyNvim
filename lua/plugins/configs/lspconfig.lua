@@ -26,6 +26,10 @@ require("lspconfig").pylsp.setup({
     pylsp = {
       plugins = {
         -- Lint
+        flake8 = {
+          enabled = true,
+          maxLineLength = 180,
+        },
         mypy = {
           enabled = true,
           live_mode = false,
@@ -52,21 +56,17 @@ require("lspconfig").pylsp.setup({
         --     E501 = "I",
         --   },
         -- },
-        flake8 = {
-          enabled = true,
-          maxLineLength = 120,
-        },
         pyflakes = { enabled = false },
         pycodestyle = { enabled = false },
         mccabe = { enabled = false },
-
-        -- Code refactor
+        --
+        -- -- Code refactor
         rope = { enabled = true },
 
         -- Formatting
-        black = { enabled = true, line_length = 120 },
+        black = { enabled = false },
         pyls_isort = { enabled = false },
-        autopep8 = { enabled = false },
+        autopep8 = { enabled = false, line_length=120 },
         yapf = { enabled = false },
       },
     },

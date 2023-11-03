@@ -8,6 +8,14 @@ return {
 		opts = { style = "moon" },
 	},
 
+
+	-- decay	
+	{
+		"decaycs/decay.nvim",
+		lazy = true,
+		opts = { style = "dark" },
+	},
+
 	-- add everforest
 	{
 		"neanias/everforest-nvim",
@@ -29,7 +37,7 @@ return {
 		opts = {
 			-- colorscheme = "everforest",
 			-- colorscheme = "nordfox",
-      colorscheme = "tokyonight",
+      colorscheme = "decay",
       checker = {
         enabled = false,
       }

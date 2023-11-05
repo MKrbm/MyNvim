@@ -10,19 +10,26 @@ local clipboard_config = function()
 			paste = { ["+"] = "pbpaste", ["*"] = "pbpaste" },
 			cache_enabled = 0,
 		}
-	elseif global.is_wsl then
+	else -- if global.is_linux then
 		vim.g.clipboard = {
-			name = "win32yank-wsl",
-			copy = {
-				["+"] = "win32yank.exe -i --crlf",
-				["*"] = "win32yank.exe -i --crlf",
-			},
-			paste = {
-				["+"] = "win32yank.exe -o --lf",
-				["*"] = "win32yank.exe -o --lf",
-			},
+			name = "linux-clipboard",
+			copy = { ["+"] = "xclip -selection clipboard", ["*"] = "xclip -selection clipboard" },
+			paste = { ["+"] = "xclip -selection clipboard -o", ["*"] = "xclip -selection clipboard -o" },
 			cache_enabled = 0,
 		}
+	-- elseif global.is_wsl then
+	-- 	vim.g.clipboard = {
+	-- 		name = "win32yank-wsl",
+	-- 		copy = {
+	-- 			["+"] = "win32yank.exe -i --crlf",
+	-- 			["*"] = "win32yank.exe -i --crlf",
+	-- 		},
+	-- 		paste = {
+	-- 			["+"] = "win32yank.exe -o --lf",
+	-- 			["*"] = "win32yank.exe -o --lf",
+	-- 		},
+	-- 		cache_enabled = 0,
+	-- 	}
 	end
 end
 
@@ -51,7 +58,7 @@ g.mapleader = " "
 -- opt.shell = "/bin/zsh"
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
--- opt.clipboard = "unnamedplus" -- copy paste automatically to system clipboard
+opt.clipboard = "unnamedplus"
 opt.cursorline = true
 
 opt.exrc = true

@@ -371,12 +371,12 @@ return {
         vim.api.nvim_set_option_value("foldexpr", "0", { scope = "local" })
       end,
       highlights = {
-        Normal = {
-          guibg = "#1e222a",
-        },
+        -- Normal = {
+          -- guibg = "#1e222a",
+        -- },
         NormalFloat = {
-          -- link = "NormalNC",
-          guibg = "#1e222a",
+          link = "NormalNC",
+          -- guibg = "#1e222a",
         },
         FloatBorder = {
           link = "NormalNC",

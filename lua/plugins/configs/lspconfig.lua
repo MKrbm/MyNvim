@@ -66,7 +66,7 @@ require("lspconfig").pylsp.setup({
         -- Formatting
         black = { enabled = false },
         pyls_isort = { enabled = false },
-        autopep8 = { enabled = false, line_length=120 },
+        autopep8 = { enabled = true, line_length = 180 },
         yapf = { enabled = false },
       },
     },

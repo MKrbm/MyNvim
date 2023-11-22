@@ -75,7 +75,7 @@ set_keymap("o", "aP", "ap", { desc = "Select entire paragraph" })
 set_keymap("o", "ia", 'i"', { desc = "Inner double quotes", noremap = true, silent = true })
 set_keymap("o", "aa", 'a"', { desc = "Around double quotes", noremap = true, silent = true })
 set_keymap("o", "is", "i'", { desc = "Inner single quotes", noremap = true, silent = true })
-set_keymap("o", "as", "i'", { desc = "Around single quotes", noremap = true, silent = true })
+set_keymap("o", "as", "a'", { desc = "Around single quotes", noremap = true, silent = true })
 set_keymap("o", "ik", "iB", { desc = "Inner {}" })
 set_keymap("o", "ak", "aB", { desc = "Around {}" })
 
@@ -259,3 +259,28 @@ set_keymap({'n', 'x', 'o'}, 'gs', "<Plug>(leap-from-window)", { desc = "leap fro
 
 -- cmp
 set_keymap("i", '<C-i>', '<Cmd> lua require("cmp").complete()<CR>', { desc = "open complete" } )
+
+-- debug 
+-- vim.api.nvim_set_keymap('n', '<F5>', ':DapContinue<CR>', { silent = true })
+-- vim.api.nvim_set_keymap('n', '<F10>', ':DapStepOver<CR>', { silent = true })
+-- vim.api.nvim_set_keymap('n', '<F11>', ':DapStepInto<CR>', { silent = true })
+-- vim.api.nvim_set_keymap('n', '<F12>', ':DapStepOut<CR>', { silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>b', ':DapToggleBreakpoint<CR>', { silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>B', ':lua require("dap").set_breakpoint(nil, nil, vim.fn.input("Breakpoint condition: "))<CR>', { silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>lp', ':lua require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>', { silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>dr', ':lua require("dap").repl.open()<CR>', { silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>dl', ':lua require("dap").run_last()<CR>', { silent = true })
+
+set_keymap("n", "<M-r>", ":Dap<CR>", { desc = "DapContinue" })
+set_keymap("n", "<F5>", ":DapRestartFrame<CR>", { desc = "DapRestartFrame" })
+set_keymap("n", "<F10>", ":DapStepOver<CR>", { desc = "DapStepOver" })
+set_keymap("n", "<F11>", ":DapStepInto<CR>", { desc = "DapStepInto" })
+set_keymap("n", "<F12>", ":DapStepOut<CR>", { desc = "DapStepOut" })
+set_keymap("n", "\\db", ":DapToggleBreakpoint<CR>", { desc = "DapToggleBreakpoint" })
+set_keymap("n", "\\dB", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Breakpoint condition: '))<CR>", { desc = "DapSetBreakpoint" })
+set_keymap("n", "\\lp", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", { desc = "DapLogPoint" })
+set_keymap("n", "\\dr", ":lua require('dap').repl.open()<CR>", { desc = "DapReplOpen" })
+set_keymap("n", "\\dl", ":lua require('dap').run_last()<CR>", { desc = "DapRunLast" })
+set_keymap("n", "\\dd", ":lua require('dapui').toggle()<CR>", { desc = "DapUiToggle" })
+set_keymap("n", "\\de", ":lua require('dapui').eval()<CR>", { desc = "DapUiEval" })
+

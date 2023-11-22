@@ -35,11 +35,6 @@ local sources = {
   -- c++
   b.formatting.clang_format,
 
-  -- python
-  b.formatting.black.with({
-    extra_args = { "--line-length", "120" },
-  }),
-
   -- Python
   b.diagnostics.mypy,
 

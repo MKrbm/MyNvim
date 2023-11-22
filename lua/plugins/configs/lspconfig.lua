@@ -3,7 +3,6 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"tsserver",
 		"clangd",
-		"pylsp",
 	},
 })
 
@@ -32,8 +31,12 @@ require("lspconfig").clangd.setup({
 	},
 })
 
+local python_path = os.getenv("CONDA_PREFIX") or os.getenv("VIRTUAL_ENV") or "/usr"
+local python_executable = python_path .. "/bin/python"
+local pylsp_executable = python_path .. "/bin/pylsp"
+
 require("lspconfig").pylsp.setup({
-	cmd = { "pylsp" },
+	cmd = { pylsp_executable, "-v", "--log-file", "/tmp/pylsp.log"},
 	filetypes = { "python" },
 	settings = {
 		pylsp = {
@@ -43,36 +46,11 @@ require("lspconfig").pylsp.setup({
 					enabled = true,
 					maxLineLength = 180,
 				},
-				mypy = {
+				pylsp_mypy = {
 					enabled = true,
-					live_mode = false,
+					live_mode = true,
 					strict = true,
 				},
-				-- ruff = {
-				--   enabled = true,
-				--   select = {
-				--     -- enable pycodestyle
-				--     "E",
-				--     -- enable pyflakes
-				--     "F",
-				--   },
-				--   ignore = {
-				--     -- ignore E501 (line too long)
-				--     -- "E501",
-				--     -- ignore F401 (imported but unused)
-				--     -- "F401",
-				--   },
-				--   extendSelect = { "I" },
-				--   severities = {
-				--     -- Hint, Information, Warning, Error
-				--     F401 = "I",
-				--     E501 = "I",
-				--   },
-				-- },
-				pyflakes = { enabled = false },
-				pycodestyle = { enabled = false },
-				mccabe = { enabled = false },
-				--
 				-- -- Code refactor
 				rope = { enabled = true },
 

@@ -2,35 +2,71 @@ local g = vim.g
 local opt = vim.opt
 local global = require("core.global")
 
+-- local clipboard_config = function()
+-- 	if global.is_mac then
+-- 		vim.g.clipboard = {
+-- 			name = "macOS-clipboard",
+-- 			copy = { ["+"] = "pbcopy", ["*"] = "pbcopy" },
+-- 			paste = { ["+"] = "pbpaste", ["*"] = "pbpaste" },
+-- 			cache_enabled = 0,
+-- 		}
+-- 	else -- if global.is_linux then
+-- 		vim.g.clipboard = {
+-- 			name = "linux-clipboard",
+-- 			copy = { ["+"] = "xclip -selection clipboard", ["*"] = "xclip -selection clipboard" },
+-- 			paste = { ["+"] = "xclip -selection clipboard -o", ["*"] = "xclip -selection clipboard -o" },
+-- 			cache_enabled = 0,
+-- 		}
+-- 	-- elseif global.is_wsl then
+-- 	-- 	vim.g.clipboard = {
+-- 	-- 		name = "win32yank-wsl",
+-- 	-- 		copy = {
+-- 	-- 			["+"] = "win32yank.exe -i --crlf",
+-- 	-- 			["*"] = "win32yank.exe -i --crlf",
+-- 	-- 		},
+-- 	-- 		paste = {
+-- 	-- 			["+"] = "win32yank.exe -o --lf",
+-- 	-- 			["*"] = "win32yank.exe -o --lf",
+-- 	-- 		},
+-- 	-- 		cache_enabled = 0,
+-- 	-- 	}
+-- 	end
+-- end
+
 local clipboard_config = function()
-	if global.is_mac then
-		vim.g.clipboard = {
-			name = "macOS-clipboard",
-			copy = { ["+"] = "pbcopy", ["*"] = "pbcopy" },
-			paste = { ["+"] = "pbpaste", ["*"] = "pbpaste" },
-			cache_enabled = 0,
-		}
-	else -- if global.is_linux then
-		vim.g.clipboard = {
-			name = "linux-clipboard",
-			copy = { ["+"] = "xclip -selection clipboard", ["*"] = "xclip -selection clipboard" },
-			paste = { ["+"] = "xclip -selection clipboard -o", ["*"] = "xclip -selection clipboard -o" },
-			cache_enabled = 0,
-		}
-	-- elseif global.is_wsl then
-	-- 	vim.g.clipboard = {
-	-- 		name = "win32yank-wsl",
-	-- 		copy = {
-	-- 			["+"] = "win32yank.exe -i --crlf",
-	-- 			["*"] = "win32yank.exe -i --crlf",
-	-- 		},
-	-- 		paste = {
-	-- 			["+"] = "win32yank.exe -o --lf",
-	-- 			["*"] = "win32yank.exe -o --lf",
-	-- 		},
-	-- 		cache_enabled = 0,
-	-- 	}
-	end
+  -- Detect if we're running inside WSL
+  local is_wsl = (vim.fn.has("unix") == 1) and (os.getenv("WSL_DISTRO_NAME") ~= nil)
+
+  if global.is_mac then
+    vim.g.clipboard = {
+      name = "macOS-clipboard",
+      copy = { ["+"] = "pbcopy", ["*"] = "pbcopy" },
+      paste = { ["+"] = "pbpaste", ["*"] = "pbpaste" },
+      cache_enabled = 0,
+    }
+  elseif is_wsl then
+    -- Special configuration for WSL
+    vim.g.clipboard = {
+      name = "wsl-clipboard",
+      copy = {
+        ["+"] = "clip.exe",
+        ["*"] = "clip.exe",
+      },
+      paste = {
+        ["+"] = "powershell.exe Get-Clipboard",
+        ["*"] = "powershell.exe Get-Clipboard",
+      },
+      cache_enabled = 0,
+    }
+  else
+    -- Default configuration for Linux
+    vim.g.clipboard = {
+      name = "linux-clipboard",
+      copy = { ["+"] = "xclip -selection clipboard", ["*"] = "xclip -selection clipboard" },
+      paste = { ["+"] = "xclip -selection clipboard -o", ["*"] = "xclip -selection clipboard -o" },
+      cache_enabled = 0,
+    }
+  end
 end
 
 local shell_config = function()

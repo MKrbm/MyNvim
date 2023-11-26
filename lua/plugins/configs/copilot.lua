@@ -31,9 +31,11 @@ return function()
 				},
 			},
 			filetypes = {
-				["dap-repl"] = false,
-				["big_file_disabled_ft"] = false,
+				-- ["dap-repl"] = true,
+				-- ["big_file_disabled_ft"] = true,
 				markdown = true,
+				yaml = true,
+				yml = true,
 			},
 		})
 	end, 100)

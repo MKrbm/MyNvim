@@ -40,25 +40,29 @@ require("lspconfig").pylsp.setup({
 	filetypes = { "python" },
 	settings = {
 		pylsp = {
+			configurationSources = {"pycodestyle"},
+			formatCommand = {"autopep8"},
 			plugins = {
 				-- Lint
-				flake8 = {
+				pycodestyle = {
 					enabled = true,
-					maxLineLength = 180,
+					maxLineLength = 120, -- default: 79
 				},
-				pylsp_mypy = {
-					enabled = true,
-					live_mode = true,
-					strict = true,
-				},
+				-- pycodestyle = {enabled = false}, -- pycodestyle is not compatible with flake8. We need to disable it.
+				-- pylsp_mypy = {
+				-- 	enabled = true,
+				-- 	live_mode = true,
+				-- 	strict = true,
+				-- },
+
 				-- -- Code refactor
-				rope = { enabled = true },
+				rope = { enabled = true }, -- This is a python refactoring library (refactor means renaming, extracting functions, ...)
 
 				-- Formatting
 				black = { enabled = false },
 				pyls_isort = { enabled = false },
-				autopep8 = { enabled = true, line_length = 180 },
 				yapf = { enabled = false },
+				autopep8 = { enabled = true , maxLineLength = 120}, -- autopep8 is a python formatting library (it fixed the pycodestyle errors)
 			},
 		},
 	},

@@ -38,6 +38,7 @@ return {
 			-- colorscheme = "everforest",
 			-- colorscheme = "nordfox",
       colorscheme = "decay",
+      -- colorscheme = "tokyonight",
       checker = {
         enabled = false,
       }

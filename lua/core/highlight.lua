@@ -129,6 +129,7 @@ M.hl = {
 }
 
 -- set_cs(everforest)
+-- set_cs(tokyonight)
 set_cs(decay)
 
 return M

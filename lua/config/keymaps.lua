@@ -192,7 +192,7 @@ set_keymap("n", "\\ut", "<CMD>UndotreeToggle<CR>", { desc = "Undotree toggle" })
 set_keymap("n", "\\uh", "<CMD>UndotreeHide<CR>", { desc = "Undotree hide" })
 
 -- lsp
-set_keymap("n", "\\fm", function() vim.lsp.buf.format({ async = true }) end, { desc = "Undotree toggle" })
+set_keymap("n", "\\fm", function() vim.lsp.buf.format({ async = true }) end, { desc = "format" })
 set_keymap("n", "gd", function() vim.lsp.buf.definition() end, { desc = "LSP definition" })
 set_keymap("n", "gD", function() vim.lsp.buf.declaration() end, { desc = "LSP declaration" })
 set_keymap("n", "gK", function() vim.lsp.buf.hover() end, { desc = "LSP hover" })

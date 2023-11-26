@@ -3,7 +3,7 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"tsserver",
 		"clangd",
-		"pylsp",
+		-- "pylsp",
 	},
 })
 
@@ -32,8 +32,12 @@ require("lspconfig").clangd.setup({
 	},
 })
 
+local python_folder = os.getenv("CONDA_PREFIX")
+local python_executable = python_folder .. "/bin/python"
+local pylsp_executable = python_folder .. "/bin/pylsp"
+
 require("lspconfig").pylsp.setup({
-	cmd = { "pylsp" },
+	cmd = {pylsp_executable},
 	filetypes = { "python" },
 	settings = {
 		pylsp = {
@@ -47,6 +51,7 @@ require("lspconfig").pylsp.setup({
 					enabled = true,
 					live_mode = false,
 					strict = true,
+					overrides = {"--python-executable", python_executable},
 				},
 				-- ruff = {
 				--   enabled = true,

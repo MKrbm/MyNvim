@@ -36,7 +36,7 @@ local python_executable = python_folder .. "/bin/python"
 local pylsp_executable = python_folder .. "/bin/pylsp"
 
 require("lspconfig").pylsp.setup({
-	cmd = { pylsp_executable },
+	cmd = { pylsp_executable, "--log-file", "/tmp/pylsp.log"},
 	filetypes = { "python" },
 	settings = {
 		pylsp = {
@@ -47,6 +47,7 @@ require("lspconfig").pylsp.setup({
 				pycodestyle = {
 					enabled = true,
 					maxLineLength = 100, -- default: 79
+					aggressive = 2,
 				},
 				mypy = {
 					enabled = true,
@@ -63,6 +64,7 @@ require("lspconfig").pylsp.setup({
 				yapf = { enabled = false },
 				autopep8 = { enabled = true, maxLineLength = 100}, -- autopep8 is a python formatting library (it fixes the pycodestyle errors)
 			},
+			log_file = "/tmp/pylsp.log",
 		},
 	},
 })

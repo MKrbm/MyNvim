@@ -344,6 +344,12 @@ return {
 	},
 
 	{
+		"iamcco/markdown-preview.nvim",
+		ft = { "markdown" },
+		build = ":call mkdp#util#install()",
+	},
+
+	{
 		"chentoast/marks.nvim",
 		lazy = false,
 		config = function()

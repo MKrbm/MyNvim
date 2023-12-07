@@ -36,46 +36,25 @@ local python_executable = python_folder .. "/bin/python"
 local pylsp_executable = python_folder .. "/bin/pylsp"
 
 require("lspconfig").pylsp.setup({
-	cmd = {pylsp_executable},
+	cmd = { pylsp_executable, "--log-file", "/tmp/pylsp.log"},
 	filetypes = { "python" },
 	settings = {
 		pylsp = {
-			configurationSources = {"pycodestyle"},
-			formatCommand = {"autopep8"},
+			configurationSources = { "pycodestyle" },
+			formatCommand = { "autopep8" },
 			plugins = {
 				-- Lint
 				pycodestyle = {
 					enabled = true,
-					maxLineLength = 120, -- default: 79
+					maxLineLength = 100, -- default: 79
+					aggressive = 2,
 				},
 				mypy = {
 					enabled = true,
 					live_mode = false,
 					strict = true,
-					overrides = {"--python-executable", python_executable},
+					overrides = { "--python-executable", python_executable },
 				},
-				-- ruff = {
-				--   enabled = true,
-				--   select = {
-				--     -- enable pycodestyle
-				--     "E",
-				--     -- enable pyflakes
-				--     "F",
-				--   },
-				--   ignore = {
-				--     -- ignore E501 (line too long)
-				--     -- "E501",
-				--     -- ignore F401 (imported but unused)
-				--     -- "F401",
-				--   },
-				--   extendSelect = { "I" },
-				--   severities = {
-				--     -- Hint, Information, Warning, Error
-				--     F401 = "I",
-				--     E501 = "I",
-				--   },
-				-- },
-
 				-- -- Code refactor
 				rope = { enabled = true }, -- This is a python refactoring library (refactor means renaming, extracting functions, ...)
 
@@ -83,8 +62,9 @@ require("lspconfig").pylsp.setup({
 				black = { enabled = false },
 				pyls_isort = { enabled = false },
 				yapf = { enabled = false },
-				autopep8 = { enabled = true , maxLineLength = 120}, -- autopep8 is a python formatting library (it fixed the pycodestyle errors)
+				autopep8 = { enabled = true, maxLineLength = 100}, -- autopep8 is a python formatting library (it fixes the pycodestyle errors)
 			},
+			log_file = "/tmp/pylsp.log",
 		},
 	},
 })

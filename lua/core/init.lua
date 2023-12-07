@@ -64,7 +64,7 @@ opt.cursorline = true
 opt.exrc = true
 -- Indenting
 opt.shiftwidth = 2
-opt.smartindent = true
+-- opt.smartindent = true
 opt.softtabstop = 2
 opt.tabstop = 2
 

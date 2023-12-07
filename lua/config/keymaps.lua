@@ -8,6 +8,7 @@ local function set_keymap(mode, lhs, rhs, opts)
 end
 
 -- Normal mode keybindings
+set_keymap("n", "*", ":let @/= '\\<' . expand('<cword>') . '\\>' <bar> set hls <cr>", { desc = "Highlight word under cursor" })
 set_keymap("n", "<leader>ss", "<cmd> SessionSave <CR>", { desc = "Save session" })
 set_keymap("n", "<leader>sl", "<cmd> SessionLoad <CR>", { desc = "Load session" })
 set_keymap("n", "zk", "<CMD> call append(line('.')-1, '') <CR>", { desc = "Insert line above" })

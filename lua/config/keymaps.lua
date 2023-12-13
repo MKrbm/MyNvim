@@ -272,7 +272,7 @@ set_keymap("i", '<C-i>', '<Cmd> lua require("cmp").complete()<CR>', { desc = "op
 -- vim.api.nvim_set_keymap('n', '<leader>dr', ':lua require("dap").repl.open()<CR>', { silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>dl', ':lua require("dap").run_last()<CR>', { silent = true })
 
-set_keymap("n", "<M-r>", ":Dap<CR>", { desc = "DapContinue" })
+set_keymap("n", "<M-r>", ":DapContinue<CR>", { desc = "DapContinue" })
 set_keymap("n", "<F5>", ":DapRestartFrame<CR>", { desc = "DapRestartFrame" })
 set_keymap("n", "<F10>", ":DapStepOver<CR>", { desc = "DapStepOver" })
 set_keymap("n", "<F11>", ":DapStepInto<CR>", { desc = "DapStepInto" })

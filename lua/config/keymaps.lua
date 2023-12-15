@@ -58,6 +58,7 @@ set_keymap("n", "<leader>q", "q", { desc = "Original q functionality" })
 set_keymap("n", "<leader>2", "@", { desc = "Execute register" })
 set_keymap("n", "<S-M-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 set_keymap("n", "<S-M-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+
 set_keymap({ "n", "v", "o" }, "<M-m>", "M", { desc = "Cursor middle" })
 set_keymap({ "n", "v", "o" }, "<M-h>", "H", { desc = "Cursor top" })
 set_keymap({ "n", "v", "o" }, "<M-l>", "L", { desc = "Cursor bottom" })

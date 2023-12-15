@@ -61,6 +61,11 @@ require("lspconfig").pylsp.setup({
 				-- -- Code refactor
 				rope = { enabled = true }, -- This is a python refactoring library (refactor means renaming, extracting functions, ...)
 
+				pydocstyle = { -- n: make sure to install pydocstyle before using it
+					enabled = true,
+					convention = "google",
+				},
+
 				-- Formatting
 				black = { enabled = false },
 				pyls_isort = { enabled = false },

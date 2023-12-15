@@ -30,7 +30,9 @@ local sources = {
 
 	-- latex
 	b.formatting.latexindent,
-	-- b.diagnostics.vale,
+
+	-- bash
+	b.formatting.beautysh,
 
 	-- c++
 	b.formatting.clang_format,

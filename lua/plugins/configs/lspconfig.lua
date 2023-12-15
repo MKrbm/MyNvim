@@ -16,6 +16,9 @@ require("lspconfig").lua_ls.setup({
 	},
 })
 
+
+require("lspconfig").bashls.setup({})
+
 require("lspconfig").clangd.setup({
 	cmd = {
 		-- see clangd --help-hidden
@@ -36,7 +39,7 @@ local python_executable = python_folder .. "/bin/python"
 local pylsp_executable = python_folder .. "/bin/pylsp"
 
 require("lspconfig").pylsp.setup({
-	cmd = { pylsp_executable, "--log-file", "/tmp/pylsp.log"},
+	cmd = { pylsp_executable, "--log-file", "/tmp/pylsp.log" },
 	filetypes = { "python" },
 	settings = {
 		pylsp = {
@@ -62,7 +65,7 @@ require("lspconfig").pylsp.setup({
 				black = { enabled = false },
 				pyls_isort = { enabled = false },
 				yapf = { enabled = false },
-				autopep8 = { enabled = true, maxLineLength = 100}, -- autopep8 is a python formatting library (it fixes the pycodestyle errors)
+				autopep8 = { enabled = true, maxLineLength = 100 }, -- autopep8 is a python formatting library (it fixes the pycodestyle errors)
 			},
 			log_file = "/tmp/pylsp.log",
 		},

@@ -1,22 +1,27 @@
 -- Simplified function to set keybindings
 local function set_keymap(mode, lhs, rhs, opts)
-  local options = { noremap = true, silent = true }
-  for k, v in pairs(opts) do
-    options[k] = v
-  end
-  vim.keymap.set(mode, lhs, rhs, options)
+	local options = { noremap = true, silent = true }
+	for k, v in pairs(opts) do
+		options[k] = v
+	end
+	vim.keymap.set(mode, lhs, rhs, options)
 end
 
 -- Normal mode keybindings
-set_keymap("n", "*", ":let @/= '\\<' . expand('<cword>') . '\\>' <bar> set hls <cr>", { desc = "Highlight word under cursor" })
+set_keymap(
+	"n",
+	"*",
+	":let @/= '\\<' . expand('<cword>') . '\\>' <bar> set hls <cr>",
+	{ desc = "Highlight word under cursor" }
+)
 set_keymap("n", "<leader>ss", "<cmd> SessionSave <CR>", { desc = "Save session" })
 set_keymap("n", "<leader>sl", "<cmd> SessionLoad <CR>", { desc = "Load session" })
 set_keymap("n", "zk", "<CMD> call append(line('.')-1, '') <CR>", { desc = "Insert line above" })
 set_keymap("n", "zj", "<CMD> call append(line('.'), '') <CR>", { desc = "Insert line below" })
 set_keymap("n", "#", "^", { desc = "Go to start of line" })
 set_keymap("n", "^", "#", { desc = "Search for word under cursor" })
-set_keymap({"n", "v"}, "<leader>[", "gg", { desc = "Go to top of file" })
-set_keymap({"n", "v"}, "<leader>]", "G", { desc = "Go to end of file" })
+set_keymap({ "n", "v" }, "<leader>[", "gg", { desc = "Go to top of file" })
+set_keymap({ "n", "v" }, "<leader>]", "G", { desc = "Go to end of file" })
 set_keymap("n", "\\q", "<CMD>q<CR>", { desc = "Quit current window" })
 set_keymap("n", "<M-q>", "<CMD>bd<CR>", { desc = "Quit buffer" })
 set_keymap("n", "<leader>h", "<CMD>sp<CR>", { desc = "Split window horizontally" })
@@ -33,10 +38,10 @@ set_keymap("n", "<S-j>", "<CMD>BufferLineCyclePrev<CR>", { desc = "Previous buff
 set_keymap("n", "<S-k>", "<CMD>BufferLineCycleNext<CR>", { desc = "Next buffer" })
 set_keymap("n", "\\k", "<S-k>", { desc = "Shifted up key binding" })
 set_keymap(
-  "n",
-  "<leader>su",
-  '<Cmd>lua require("which-key").show("z=", {mode = "n", auto = true})<CR>',
-  { desc = "Which key" }
+	"n",
+	"<leader>su",
+	'<Cmd>lua require("which-key").show("z=", {mode = "n", auto = true})<CR>',
+	{ desc = "Which key" }
 )
 set_keymap("n", "<leader>sg", "zg", { desc = "Mark word as good" })
 set_keymap("n", "<leader>sr", "zug", { desc = "Remove word from good list" })
@@ -53,13 +58,13 @@ set_keymap("n", "<leader>q", "q", { desc = "Original q functionality" })
 set_keymap("n", "<leader>2", "@", { desc = "Execute register" })
 set_keymap("n", "<S-M-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 set_keymap("n", "<S-M-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-set_keymap({"n", "v", "o"}, "<M-m>", "M", { desc = "Cursor middle" })
-set_keymap({"n", "v", "o"}, "<M-h>", "H", { desc = "Cursor top" })
-set_keymap({"n", "v", "o"}, "<M-l>", "L", { desc = "Cursor bottom" })
+set_keymap({ "n", "v", "o" }, "<M-m>", "M", { desc = "Cursor middle" })
+set_keymap({ "n", "v", "o" }, "<M-h>", "H", { desc = "Cursor top" })
+set_keymap({ "n", "v", "o" }, "<M-l>", "L", { desc = "Cursor bottom" })
 
 --extend operator-pending selection
-set_keymap("x", "il", "g_o^", { desc = "Select to start of line", nowait = true, noremap = true})
-set_keymap("x", "al", "$o^", { desc = "Select to end of line", nowait = true, noremap = true})
+set_keymap("x", "il", "g_o^", { desc = "Select to start of line", nowait = true, noremap = true })
+set_keymap("x", "al", "$o^", { desc = "Select to end of line", nowait = true, noremap = true })
 set_keymap("x", "ip", "i[", { desc = "Select inside parentheses" })
 set_keymap("x", "ap", "a[", { desc = "Select around parentheses" })
 set_keymap("x", "iP", "ip", { desc = "Select inner paragraph" })
@@ -83,13 +88,15 @@ set_keymap("o", "as", "a'", { desc = "Around single quotes", noremap = true, sil
 set_keymap("o", "ik", "iB", { desc = "Inner {}" })
 set_keymap("o", "ak", "aB", { desc = "Around {}" })
 
+
+
 -- Visual mode keybindings
+-- vim.api.nvim_set_keymap('v', 'p', 'P', { noremap = true })
+set_keymap("v", "p", "P", { desc = "Paste without overwride" })
+set_keymap("v", "P", "p", { desc = "Pase with overwrite" })
+
 set_keymap("v", "#", "^", { desc = "Start of line" })
 set_keymap("v", "^", "#", { desc = "Search for word under cursor" })
--- set_keymap("v", "<space>[", "[[", { desc = "Previous function start" })
--- set_keymap("v", "<space>]", "]]", { desc = "Next function start" })
--- set_keymap("v", "[{", "[m", { desc = "Previous method/function start" })
--- set_keymap("v", "[}]", "[]", { desc = "Next method/function start" })
 set_keymap("v", ";", "<Plug>(clever-f-repeat-forward)", { desc = "Clever forward" })
 set_keymap("v", ",", "<Plug>(clever-f-repeat-back)", { desc = "Clever back" })
 set_keymap("v", "<leader>d", '"_d', { desc = "Delete without yank" })
@@ -149,10 +156,10 @@ set_keymap("n", "<leader>xa", ":wa<CR>:qa<CR>", { desc = "Save all and quit" })
 set_keymap("n", "<leader>fm", ":Telescope harpoon marks<CR>", { desc = "show harpoon marks" })
 set_keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Find files" })
 set_keymap(
-  "n",
-  "<leader>fa",
-  "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
-  { desc = "Find files with advanced options" }
+	"n",
+	"<leader>fa",
+	"<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
+	{ desc = "Find files with advanced options" }
 )
 set_keymap("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "Live grep" })
 set_keymap("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "List buffers" })
@@ -160,10 +167,10 @@ set_keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Find hel
 set_keymap("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Find old files" })
 set_keymap("n", "<leader>fc", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Fuzzy find in current buffer" })
 set_keymap(
-  "n",
-  "<leader>fz",
-  ":lua require('telescope.builtin').live_grep({ prompt_title = 'Find in current buffer', search_dirs = {'%:p'} })<CR>",
-  { desc = "Live grep in current directory" }
+	"n",
+	"<leader>fz",
+	":lua require('telescope.builtin').live_grep({ prompt_title = 'Find in current buffer', search_dirs = {'%:p'} })<CR>",
+	{ desc = "Live grep in current directory" }
 )
 set_keymap("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "List git commits" })
 set_keymap("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "Git status" })
@@ -179,16 +186,16 @@ set_keymap("n", "<leader>e", ":NvimTreeFindFile<CR>", { desc = "Find file in Nvi
 
 -- Comment
 set_keymap(
-  "n",
-  "<leader>/",
-  ":lua require('Comment.api').toggle.linewise.current()<CR>",
-  { desc = "Toggle comment (line)" }
+	"n",
+	"<leader>/",
+	":lua require('Comment.api').toggle.linewise.current()<CR>",
+	{ desc = "Toggle comment (line)" }
 )
 set_keymap(
-  "v",
-  "<leader>/",
-  "<ESC>:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-  { desc = "Toggle comment (visual)" }
+	"v",
+	"<leader>/",
+	"<ESC>:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+	{ desc = "Toggle comment (visual)" }
 )
 
 -- Undotree keybindings
@@ -196,25 +203,55 @@ set_keymap("n", "\\ut", "<CMD>UndotreeToggle<CR>", { desc = "Undotree toggle" })
 set_keymap("n", "\\uh", "<CMD>UndotreeHide<CR>", { desc = "Undotree hide" })
 
 -- lsp
-set_keymap("n", "\\fm", function() vim.lsp.buf.format({ async = true }) end, { desc = "format" })
-set_keymap("n", "gd", function() vim.lsp.buf.definition() end, { desc = "LSP definition" })
-set_keymap("n", "gD", function() vim.lsp.buf.declaration() end, { desc = "LSP declaration" })
-set_keymap("n", "gK", function() vim.lsp.buf.hover() end, { desc = "LSP hover" })
-set_keymap("n", "gI", function() vim.lsp.buf.implementation() end, { desc = "LSP implementation" })
-set_keymap("n", "<leader>ls", function() vim.lsp.buf.signature_help() end, { desc = "LSP signature help" })
-set_keymap("n", "<leader>D", function() vim.lsp.buf.type_definition() end, { desc = "LSP definition type" })
+set_keymap("n", "\\fm", function()
+	vim.lsp.buf.format({ async = true })
+end, { desc = "format" })
+set_keymap("n", "gd", function()
+	vim.lsp.buf.definition()
+end, { desc = "LSP definition" })
+set_keymap("n", "gD", function()
+	vim.lsp.buf.declaration()
+end, { desc = "LSP declaration" })
+set_keymap("n", "gK", function()
+	vim.lsp.buf.hover()
+end, { desc = "LSP hover" })
+set_keymap("n", "gI", function()
+	vim.lsp.buf.implementation()
+end, { desc = "LSP implementation" })
+set_keymap("n", "<leader>ls", function()
+	vim.lsp.buf.signature_help()
+end, { desc = "LSP signature help" })
+set_keymap("n", "<leader>D", function()
+	vim.lsp.buf.type_definition()
+end, { desc = "LSP definition type" })
 -- set_keymap("n", "<leader>ra", function() require("nvchad.renamer").open() end, { desc = "LSP rename" })
-set_keymap({"n", "v"}, "<leader>ca",function() vim.lsp.buf.code_action() end, { desc = "LSP code action" })
-set_keymap("n", "gr", function() vim.lsp.buf.references() end, { desc = "LSP references" })
-set_keymap("n", "<leader>se", function() vim.diagnostic.open_float { border = "rounded" } end,
-  { desc = "show Floating diagnostic" })
-set_keymap("n", "[d", function() vim.diagnostic.goto_prev { float = { border = "rounded" } } end, { desc = "Goto prev" })
-set_keymap("n", "]d", function() vim.diagnostic.goto_next { float = { border = "rounded" } } end, { desc = "Goto next" })
-set_keymap("n", "<leader>q", function() vim.diagnostic.setloclist() end, { desc = "Diagnostic setloclist" })
-set_keymap("n", "<leader>wa", function() vim.lsp.buf.add_workspace_folder() end, { desc = "Add workspace folder" })
-set_keymap("n", "<leader>wr", function() vim.lsp.buf.remove_workspace_folder() end, { desc = "Remove workspace folder" })
-set_keymap("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-  { desc = "List workspace folders" })
+set_keymap({ "n", "v" }, "<leader>ca", function()
+	vim.lsp.buf.code_action()
+end, { desc = "LSP code action" })
+set_keymap("n", "gr", function()
+	vim.lsp.buf.references()
+end, { desc = "LSP references" })
+set_keymap("n", "<leader>se", function()
+	vim.diagnostic.open_float({ border = "rounded" })
+end, { desc = "show Floating diagnostic" })
+set_keymap("n", "[d", function()
+	vim.diagnostic.goto_prev({ float = { border = "rounded" } })
+end, { desc = "Goto prev" })
+set_keymap("n", "]d", function()
+	vim.diagnostic.goto_next({ float = { border = "rounded" } })
+end, { desc = "Goto next" })
+set_keymap("n", "<leader>q", function()
+	vim.diagnostic.setloclist()
+end, { desc = "Diagnostic setloclist" })
+set_keymap("n", "<leader>wa", function()
+	vim.lsp.buf.add_workspace_folder()
+end, { desc = "Add workspace folder" })
+set_keymap("n", "<leader>wr", function()
+	vim.lsp.buf.remove_workspace_folder()
+end, { desc = "Remove workspace folder" })
+set_keymap("n", "<leader>wl", function()
+	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+end, { desc = "List workspace folders" })
 
 -- nvim-hop for normal mode
 set_keymap("n", "G", "<cmd> HopPatternMW <CR>", { silent = true, noremap = true, desc = "nvim-hop Pattern" })
@@ -258,14 +295,14 @@ set_keymap("n", "\\cb", "<CMD> CMakeSelectBuildType <CR>", { desc = "Select Buil
 set_keymap("n", "\\cd", "<CMD> CMakeQuickDebug <CR>", { desc = "Quick Debug" })
 
 -- leap
-set_keymap({'n', 'x', 'o'}, 'w', "<Plug>(leap-forward-to)", { desc = "leap forward" } )
-set_keymap({'n', 'x', 'o'}, '<s-w>', "<Plug>(leap-backward-to)", { desc = "leap backward" } )
-set_keymap({'n', 'x', 'o'}, 'gs', "<Plug>(leap-from-window)", { desc = "leap from window" } )
+set_keymap({ "n", "x", "o" }, "w", "<Plug>(leap-forward-to)", { desc = "leap forward" })
+set_keymap({ "n", "x", "o" }, "<s-w>", "<Plug>(leap-backward-to)", { desc = "leap backward" })
+set_keymap({ "n", "x", "o" }, "gs", "<Plug>(leap-from-window)", { desc = "leap from window" })
 
 -- cmp
-set_keymap("i", '<C-i>', '<Cmd> lua require("cmp").complete()<CR>', { desc = "open complete" } )
+set_keymap("i", "<C-i>", '<Cmd> lua require("cmp").complete()<CR>', { desc = "open complete" })
 
--- debug 
+-- debug
 -- vim.api.nvim_set_keymap('n', '<F5>', ':DapContinue<CR>', { silent = true })
 -- vim.api.nvim_set_keymap('n', '<F10>', ':DapStepOver<CR>', { silent = true })
 -- vim.api.nvim_set_keymap('n', '<F11>', ':DapStepInto<CR>', { silent = true })
@@ -283,11 +320,20 @@ set_keymap("n", "<M-u>", ":DapStepOver<CR>", { desc = "DapStepOver" })
 set_keymap("n", "<F11>", ":DapStepInto<CR>", { desc = "DapStepInto" })
 set_keymap("n", "<F12>", ":DapStepOut<CR>", { desc = "DapStepOut" })
 set_keymap("n", "\\db", ":DapToggleBreakpoint<CR>", { desc = "DapToggleBreakpoint" })
-set_keymap("n", "\\dB", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Breakpoint condition: '))<CR>", { desc = "DapSetBreakpoint" })
-set_keymap("n", "\\lp", ":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", { desc = "DapLogPoint" })
+set_keymap(
+	"n",
+	"\\dB",
+	":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Breakpoint condition: '))<CR>",
+	{ desc = "DapSetBreakpoint" }
+)
+set_keymap(
+	"n",
+	"\\lp",
+	":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
+	{ desc = "DapLogPoint" }
+)
 set_keymap("n", "\\dr", ":lua require('dap').repl.open()<CR>", { desc = "DapReplOpen" })
 set_keymap("n", "\\dl", ":lua require('dap').run_last()<CR>", { desc = "DapRunLast" })
 set_keymap("n", "\\dd", ":lua require('dapui').toggle()<CR>", { desc = "DapUiToggle" })
 set_keymap("n", "\\de", ":lua require('dapui').eval()<CR>", { desc = "DapUiEval" })
 set_keymap("n", "<M-o>", ":lua require('dapui').eval()<CR>", { desc = "DapUiEval" })
-

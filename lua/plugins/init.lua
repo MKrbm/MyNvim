@@ -201,7 +201,7 @@ return {
 			{
 				"HiPhish/rainbow-delimiters.nvim",
 				config = function()
-					require("rainbow-delimiters.setup")({
+					require("rainbow-delimiters.setup").setup({
 						highlight = {
 							"rainbow1",
 							"rainbow2",
@@ -211,7 +211,6 @@ return {
 							"rainbow6",
 							"rainbow7",
 						},
-						blacklist = {},
 					})
 				end,
 			},
@@ -647,7 +646,7 @@ return {
 				multiline = true,               -- enable multine todo comments
 				multiline_pattern = "^.",       -- lua pattern to match the next multiline from the start of the matched keyword
 				multiline_context = 10,         -- extra lines that will be re-evaluated when changing a line
-				before = "fg",                  -- "fg" or "bg" or empty
+				before = "",                  -- "fg" or "bg" or empty
 				keyword = "fg",                 -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty. (wide and wide_bg is the same as bg, but will also highlight surrounding characters, wide_fg acts accordingly but with fg)
 				after = "fg",                   -- "fg" or "bg" or empty
 				pattern = { [[\#\s*<(KEYWORDS)\s*:]], [[//\s*<(KEYWORDS)\s*:]], [[--\s*<(KEYWORDS)\s*:]], [[%\s*<(KEYWORDS)\s*:]] }, -- pattern or table of patterns, used for highlighting (vim regex) (I modifed so that it triggers when keyword appear right after #)

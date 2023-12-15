@@ -53,6 +53,9 @@ set_keymap("n", "<leader>q", "q", { desc = "Original q functionality" })
 set_keymap("n", "<leader>2", "@", { desc = "Execute register" })
 set_keymap("n", "<S-M-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 set_keymap("n", "<S-M-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+set_keymap({"n", "v", "o"}, "<M-m>", "M", { desc = "Cursor middle" })
+set_keymap({"n", "v", "o"}, "<M-h>", "H", { desc = "Cursor top" })
+set_keymap({"n", "v", "o"}, "<M-l>", "L", { desc = "Cursor bottom" })
 
 --extend operator-pending selection
 set_keymap("x", "il", "g_o^", { desc = "Select to start of line", nowait = true, noremap = true})
@@ -252,6 +255,7 @@ set_keymap("n", "\\cs", "<CMD> CMakeStop <CR>", { desc = "stop cmake " })
 set_keymap("n", "\\co", "<CMD> CMakeOpen <CR>", { desc = "Open cmake" })
 set_keymap("n", "\\ct", "<CMD> CMakeSelectBuildTarget <CR>", { desc = "Select Build target" })
 set_keymap("n", "\\cb", "<CMD> CMakeSelectBuildType <CR>", { desc = "Select Build type" })
+set_keymap("n", "\\cd", "<CMD> CMakeQuickDebug <CR>", { desc = "Quick Debug" })
 
 -- leap
 set_keymap({'n', 'x', 'o'}, 'w', "<Plug>(leap-forward-to)", { desc = "leap forward" } )
@@ -275,6 +279,7 @@ set_keymap("i", '<C-i>', '<Cmd> lua require("cmp").complete()<CR>', { desc = "op
 set_keymap("n", "<M-r>", ":DapContinue<CR>", { desc = "DapContinue" })
 set_keymap("n", "<F5>", ":DapRestartFrame<CR>", { desc = "DapRestartFrame" })
 set_keymap("n", "<F10>", ":DapStepOver<CR>", { desc = "DapStepOver" })
+set_keymap("n", "<M-u>", ":DapStepOver<CR>", { desc = "DapStepOver" })
 set_keymap("n", "<F11>", ":DapStepInto<CR>", { desc = "DapStepInto" })
 set_keymap("n", "<F12>", ":DapStepOut<CR>", { desc = "DapStepOut" })
 set_keymap("n", "\\db", ":DapToggleBreakpoint<CR>", { desc = "DapToggleBreakpoint" })
@@ -284,4 +289,5 @@ set_keymap("n", "\\dr", ":lua require('dap').repl.open()<CR>", { desc = "DapRepl
 set_keymap("n", "\\dl", ":lua require('dap').run_last()<CR>", { desc = "DapRunLast" })
 set_keymap("n", "\\dd", ":lua require('dapui').toggle()<CR>", { desc = "DapUiToggle" })
 set_keymap("n", "\\de", ":lua require('dapui').eval()<CR>", { desc = "DapUiEval" })
+set_keymap("n", "<M-o>", ":lua require('dapui').eval()<CR>", { desc = "DapUiEval" })
 

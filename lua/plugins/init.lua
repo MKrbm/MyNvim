@@ -1,3 +1,4 @@
+local global = require("core.global")
 return {
 
 	"nvim-lua/plenary.nvim",
@@ -695,12 +696,17 @@ return {
 				aux_dir = "./aux",
 				out_dir = "./out",
 			}
-			vim.g.vimtex_indent_enabled = 0
-			vim.g.vimtex_view_method = 'skim'
-			vim.g.vimtex_view_skim_activate = 1
-			vim.g.vimtex_view_skim_sync = 1  -- Value 1 allows forward search after every successful compilation
-			-- vim.g.vimtex_view_general_viewer = "skim"
-			-- vim.g.vimtex_view_general_options = "--noraise --unique file:@pdf\\#src:@line@tex"
+			if global.is_mac then
+				vim.g.vimtex_indent_enabled = 0
+				vim.g.vimtex_view_method = 'skim'
+				vim.g.vimtex_view_skim_activate = 1
+				vim.g.vimtex_view_skim_sync = 1  -- Value 1 allows forward search after every successful compilation
+				print(vim.g.vimtex_view_method)
+			else -- if global.is_linux then
+				vim.g.vimtex_view_general_viewer = "okular"
+				vim.g.vimtex_view_general_options = "--noraise --unique file:@pdf\\#src:@line@tex"
+				print(vim.g.vimtex_view_general_viewer)
+			end
 		end,
 	},
 

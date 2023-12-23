@@ -9,13 +9,14 @@ local function my_on_attach(bufnr)
 	api.config.mappings.default_on_attach(bufnr)
 
 	-- custom mappings
+
   vim.keymap.set("n", "<C-t>", api.tree.change_root_to_parent, opts "Up")
   vim.keymap.set("n", "<C-e>", "<C-e>", opts "Scroll down") -- used to be open in one place
   vim.keymap.set("n", "e", "e", opts "e")
   vim.keymap.set("n", "?", api.tree.toggle_help, opts "Help")
   vim.keymap.set("n", "h", api.node.navigate.parent_close, opts "Close Directory")
   vim.keymap.set("n", "<S-w>", "<Plug>(leap-backward-to)", opts "leap-backward-to")
-  vim.keymap.set("n", "<S-e>", "<S-w>", opts "fold all")
+  vim.keymap.set("n", "<S-e>", api.tree.collapse_all, opts "fold all")
   vim.keymap.set("n", "l", api.node.open.edit, opts "Open")
   vim.keymap.set("n", "<C-Right>", "<CMD>NvimTreeResize +5<CR>", opts "Increase file explorer width")
   vim.keymap.set("n", "<C-Left>", "<CMD>NvimTreeResize -5<CR>", opts "Decrease file explorer width")

@@ -701,11 +701,9 @@ return {
 				vim.g.vimtex_view_method = 'skim'
 				vim.g.vimtex_view_skim_activate = 1
 				vim.g.vimtex_view_skim_sync = 1  -- Value 1 allows forward search after every successful compilation
-				print(vim.g.vimtex_view_method)
 			else -- if global.is_linux then
 				vim.g.vimtex_view_general_viewer = "okular"
-				vim.g.vimtex_view_general_options = "--noraise --unique file:@pdf\\#src:@line@tex"
-				print(vim.g.vimtex_view_general_viewer)
+				vim.g.vimtex_view_general_options = '--unique file:@pdf\\#src:@line@tex'
 			end
 		end,
 	},

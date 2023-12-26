@@ -37,6 +37,9 @@ local sources = {
 	-- c++
 	b.formatting.clang_format,
 
+	-- latex
+	b.formatting.latexindent,
+
 	-- Python
 	-- b.diagnostics.mypy.with({
 	-- 	extra_args = function()

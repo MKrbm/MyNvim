@@ -19,6 +19,8 @@ require("lspconfig").lua_ls.setup({
 
 require("lspconfig").bashls.setup({})
 
+require("lspconfig").texlab.setup({})
+
 require("lspconfig").clangd.setup({
 	cmd = {
 		-- see clangd --help-hidden

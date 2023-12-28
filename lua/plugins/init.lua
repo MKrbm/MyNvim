@@ -692,6 +692,7 @@ return {
 		"lervag/vimtex",
 		lazy = false,
 		init = function()
+			vim.g.vimtex_quickfix_enabled = 0 -- Enable it if you want to show log when compile finished
 			vim.g.vimtex_compiler_latexmk = {
 				aux_dir = "./aux",
 				out_dir = "./out",

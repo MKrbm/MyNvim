@@ -56,7 +56,7 @@ require("lspconfig").pylsp.setup({
 				},
 				mypy = {
 					enabled = true,
-					live_mode = false,
+					live_mode = true,
 					strict = true,
 					overrides = { "--python-executable", python_executable },
 				},
@@ -80,16 +80,17 @@ require("lspconfig").pylsp.setup({
 })
 
 vim.diagnostic.config({
-	underline = true,
-	virtual_text = {
-		prefix = "",
-		severity = nil,
-		source = "if_many",
-		format = nil,
-	},
-	signs = false,
+	underline = false,
+	-- virtual_text = {
+	-- 	prefix = "",
+	-- 	severity = nil,
+	-- 	source = "if_many",
+	-- 	format = nil,
+	-- },
+	virtual_text = false,
+	signs = true,
 	severity_sort = true,
-	update_in_insert = false,
+	update_in_insert = true,
 })
 -- vim.diagnostic.config({
 --   virtual_text = true,

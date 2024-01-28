@@ -56,7 +56,7 @@ require("lspconfig").pylsp.setup({
 				},
 				mypy = {
 					enabled = true,
-					live_mode = true,
+					live_mode = false,
 					strict = true,
 					overrides = { "--python-executable", python_executable },
 				},
@@ -64,7 +64,7 @@ require("lspconfig").pylsp.setup({
 				rope = { enabled = true }, -- This is a python refactoring library (refactor means renaming, extracting functions, ...)
 
 				pydocstyle = { -- n: make sure to install pydocstyle before using it
-					enabled = true,
+					enabled = false, -- n: this is a python docstring style checker
 					convention = "google",
 				},
 
@@ -89,8 +89,8 @@ vim.diagnostic.config({
 	-- },
 	virtual_text = false,
 	signs = true,
-	severity_sort = true,
-	update_in_insert = true,
+	severity_sort = false,
+	update_in_insert = false,
 })
 -- vim.diagnostic.config({
 --   virtual_text = true,

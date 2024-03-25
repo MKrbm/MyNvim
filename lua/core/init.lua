@@ -81,7 +81,10 @@ opt.updatetime = 250
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
-
+opt.foldmethod = "indent"
+opt.foldlevelstart = 99
+g.foldmethod = "indent"
+g.foldlevelstart = 99
 g.mapleader = " "
 
 -- disable netrw at the very start of your init.lua

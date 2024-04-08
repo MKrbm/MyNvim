@@ -11,6 +11,7 @@ local set_cs = function(colorscheme)
 		fg = "white"
 	}
 
+	-- The color of cursor line
 	M.hl.CursorLine = {
 		bg = colorscheme.NormalNC,
 	}
@@ -18,6 +19,18 @@ local set_cs = function(colorscheme)
 	M.hl.Terminal = {
 		bg = colorscheme.Terminal,
 		fg = "white",
+	}
+
+	-- The color of Visual selected area. bg : color of background. fg : color of font when selected.
+	M.hl.Visual = {
+		bg = "#ababab",
+		fg = "#db4949",
+	}
+
+	-- The color of Visual selected area. bg : color of background. fg : color of font when selected.
+	M.hl.Cursor = {
+		bg = "red",
+		fg = "red",
 	}
 
 	-- if TabLine then apply the color
@@ -58,7 +71,7 @@ local decay = {
 }
 
 
-print(vim.inspect(M))
+-- print()
 
 local set_hl_group = function(group, styles)
 	vim.api.nvim_set_hl(0, group, styles)

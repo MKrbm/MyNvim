@@ -3,3 +3,4 @@ require("core")
 
 -- Lazy load plugins
 require("plugins")
+

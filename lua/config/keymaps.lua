@@ -93,7 +93,7 @@ set_keymap("o", "is", "i'", { desc = "Inner single quotes", noremap = true, sile
 set_keymap("o", "as", "a'", { desc = "Around single quotes", noremap = true, silent = true })
 set_keymap("o", "ik", "iB", { desc = "Inner {}" })
 set_keymap("o", "ak", "aB", { desc = "Around {}" })
-
+set_keymap({ "n", "v" }, "vav", "ggVG", { desc = "Select all" })
 
 
 -- Visual mode keybindings
@@ -318,6 +318,7 @@ set_keymap("i", "<C-i>", '<Cmd> lua require("cmp").complete()<CR>', { desc = "op
 -- vim.api.nvim_set_keymap('n', '<leader>lp', ':lua require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>', { silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>dr', ':lua require("dap").repl.open()<CR>', { silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>dl', ':lua require("dap").run_last()<CR>', { silent = true })
+
 
 set_keymap("n", "<M-r>", ":DapContinue<CR>", { desc = "DapContinue" })
 set_keymap("n", "<F5>", ":DapRestartFrame<CR>", { desc = "DapRestartFrame" })

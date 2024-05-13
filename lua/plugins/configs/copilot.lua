@@ -25,9 +25,9 @@ return function()
 					accept = "<A-o>",
 					accept_word = false,
 					accept_line = false,
-					next = "<A-n>",
-					prev = "<A-S-n>",
-					dismiss = "<C-]>",
+					next = "<A-S-n>",
+					prev = "<A-S-p>",
+					-- dismiss = "<C-]>",
 				},
 			},
 			filetypes = {

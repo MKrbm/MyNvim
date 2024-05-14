@@ -22,16 +22,18 @@ set_keymap("n", "#", "^", { desc = "Go to start of line" })
 set_keymap("n", "^", "#", { desc = "Search for word under cursor" })
 set_keymap({ "n", "v" }, "<leader>[", "gg", { desc = "Go to top of file" })
 set_keymap({ "n", "v" }, "<leader>]", "G", { desc = "Go to end of file" })
-set_keymap("n", "\\q", "<CMD>q<CR>", { desc = "Quit current window" })
-set_keymap("n", "<M-q>", "<CMD>bd<CR>", { desc = "Quit buffer" })
-set_keymap("n", "<leader>h", "<CMD>sp<CR>", { desc = "Split window horizontally" })
-set_keymap("n", "<leader>v", "<CMD>vs<CR>", { desc = "Split window vertically" })
+set_keymap("n", "<A-q>", "<CMD>q<CR>", { desc = "Quit current window" })
+set_keymap("n", "\\q", "<CMD>bd<CR>", { desc = "Quit buffer" })
+set_keymap("n", "<leader>sh", "<CMD>sp<CR>", { desc = "Split window horizontally" })
+set_keymap("n", "<leader>sv", "<CMD>vs<CR>", { desc = "Split window vertically" })
 set_keymap("n", "<C-Up>", "<CMD>resize +2<CR>", { desc = "Increase window height" })
 set_keymap("n", "<C-Down>", "<CMD>resize -2<CR>", { desc = "Decrease window height" })
 set_keymap("n", "<C-Right>", "<CMD>vertical resize +2<CR>", { desc = "Increase window width" })
 set_keymap("n", "<C-Left>", "<CMD>vertical resize -2<CR>", { desc = "Decrease window width" })
-set_keymap("n", "<A-j>", "<CMD>tabprevious<CR>", { desc = "Previous tab" })
-set_keymap("n", "<A-k>", "<CMD>tabnext<CR>", { desc = "Next tab" })
+set_keymap("n", "<a-o>", "<CMD>tabprevious<CR>", { desc = "Previous tab" })
+-- set_keymap("n", "<leader>j", "<CMD>tabprevious<CR>", { desc = "Previous tab" })
+set_keymap("n", "<a-p>", "<CMD>tabnext<CR>", { desc = "Next tab" })
+-- set_keymap("n", "<leader>k", "<CMD>tabnext<CR>", { desc = "Next tab" })
 set_keymap("n", "\\n", "<CMD>tab split<CR>", { desc = "Open new tab" })
 set_keymap("n", "\\x", "<CMD>tabclose<CR>", { desc = "Close tab" })
 set_keymap("n", "<S-j>", "<CMD>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
@@ -49,24 +51,26 @@ set_keymap("n", ";", "<Plug>(clever-f-repeat-forward)", { desc = "Clever forward
 set_keymap("n", ",", "<Plug>(clever-f-repeat-back)", { desc = "Clever back" })
 set_keymap("n", "<leader>xa", ":wa<CR>:qa<CR>", { desc = "Save all and quit" })
 set_keymap("n", "\\t", "<CMD>terminal<CR>", { desc = "Open terminal" })
-set_keymap("n", "<M-e>", "j<C-e>", { desc = "Move down and scroll" })
-set_keymap("n", "<M-y>", "k<C-y>", { desc = "Move up and scroll" })
-set_keymap("n", "<leader>j", "<S-j>", { desc = "Shifted down key binding" })
-set_keymap("n", "<leader>k", "a<CR><Esc>k$", { desc = "Insert new line above" })
+set_keymap("n", "<A-e>", "j<C-e>", { desc = "Move down and scroll" })
+set_keymap("n", "<A-y>", "k<C-y>", { desc = "Move up and scroll" })
+-- set_keymap("n", "<leader>j", "<S-j>", { desc = "Shifted down key binding" })
+-- set_keymap("n", "<leader>k", "a<CR><Esc>k$", { desc = "Insert new line above" })
+set_keymap("n", "<A-s>", "<S-j>", { desc = "Shifted down key binding" })
+set_keymap("n", '<A-w>', "a<CR><Esc>k$", { desc = "Insert new line above" })
 set_keymap("n", "q", "", { desc = "Unmap q" })
 set_keymap("n", "<leader>q", "q", { desc = "Original q functionality" })
 set_keymap("n", "<leader>2", "@", { desc = "Execute register" })
-set_keymap("n", "<S-M-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-set_keymap("n", "<S-M-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+-- set_keymap("n", "<S-A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+-- set_keymap("n", "<S-A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
 set_keymap("n", "zo", "za", { desc = "Toggle fold" })
 set_keymap("n", "zO", "zA", { desc = "Toggle all folds" })
 set_keymap("n", "za", "zo", { desc = "Open fold" })
 set_keymap("n", "zA", "zO", { desc = "Open all folds" })
 
 
-set_keymap({ "n", "v", "o" }, "<M-m>", "M", { desc = "Cursor middle" })
-set_keymap({ "n", "v", "o" }, "<M-h>", "H", { desc = "Cursor top" })
-set_keymap({ "n", "v", "o" }, "<M-l>", "L", { desc = "Cursor bottom" })
+set_keymap({ "n", "v", "o" }, "<S-m>", "M", { desc = "Cursor middle" })
+set_keymap({ "n", "v", "o" }, "<S-h>", "H", { desc = "Cursor top" })
+set_keymap({ "n", "v", "o" }, "<S-l>", "L", { desc = "Cursor bottom" })
 
 --extend operator-pending selection
 set_keymap("x", "il", "g_o^", { desc = "Select to start of line", nowait = true, noremap = true })
@@ -93,7 +97,7 @@ set_keymap("o", "is", "i'", { desc = "Inner single quotes", noremap = true, sile
 set_keymap("o", "as", "a'", { desc = "Around single quotes", noremap = true, silent = true })
 set_keymap("o", "ik", "iB", { desc = "Inner {}" })
 set_keymap("o", "ak", "aB", { desc = "Around {}" })
-
+set_keymap({ "n", "v" }, "vav", "ggVG", { desc = "Select all" })
 
 
 -- Visual mode keybindings
@@ -108,8 +112,8 @@ set_keymap("v", ",", "<Plug>(clever-f-repeat-back)", { desc = "Clever back" })
 set_keymap("v", "<leader>d", '"_d', { desc = "Delete without yank" })
 set_keymap("v", "<leader>j", "<S-j>", { desc = "Shifted down key binding" })
 set_keymap("v", "<s-j>", "", { desc = "Unmap shifted down" })
-set_keymap("v", "<S-M-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-set_keymap("v", "<S-M-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+-- set_keymap("v", "<S-A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+-- set_keymap("v", "<S-A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- Terminal mode keybindings
 set_keymap("t", "<C-x>", "<C-\\><C-N>", { desc = "Escape terminal mode" })
@@ -120,34 +124,31 @@ set_keymap("t", "<C-j>", "<C-x><C-w>j", { desc = "Move to bottom split", remap =
 set_keymap("t", "<C-k>", "<C-x><C-w>k", { desc = "Move to top split", remap = true })
 set_keymap("t", "<C-e>", "<C-x><C-e>", { desc = "Scroll up", remap = true })
 set_keymap("t", "<C-y>", "<C-x><C-y>", { desc = "Scroll down", remap = true })
-set_keymap("t", "<A-j>", "<CMD>tabprevious<CR>", { noremap = true, desc = "<CMD>tabprevious<CR>" })
-set_keymap("t", "<A-k>", "<CMD>tabnext<CR>", { noremap = true, desc = "<CMD>tabnext<CR>" })
+set_keymap("t", "<a-o>", "<CMD>tabprevious<CR>", { noremap = true, desc = "<CMD>tabprevious<CR>" })
+set_keymap("t", "<a-p>", "<CMD>tabnext<CR>", { noremap = true, desc = "<CMD>tabnext<CR>" })
 
 -- Window resizing
 set_keymap("n", "<C-Up>", "<CMD>resize +2<CR>", { desc = "Height up" })
 set_keymap("n", "<C-Down>", "<CMD>resize -2<CR>", { desc = "Height down" })
 
 -- Insert mode keybindings
-set_keymap("i", "<A-]>", "<C-t>", { desc = "Indent line" })
-set_keymap("i", "<A-[>", "<C-d>", { desc = "De-indent line" })
-set_keymap("i", "<A-j>", "<Down>", { desc = "Move cursor down" })
-set_keymap("i", "<A-k>", "<Up>", { desc = "Move cursor up" })
-set_keymap("i", "<A-h>", "<Left>", { desc = "Move cursor left" })
-set_keymap("i", "<A-l>", "<Right>", { desc = "Move cursor right" })
-set_keymap("i", "<S-M-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-set_keymap("i", "<S-M-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+set_keymap("i", "<A-.>", "<C-t>", { desc = "Indent line" })
+set_keymap("i", "<A-,>", "<C-d>", { desc = "De-indent line" })
+-- set_keymap("i", "<a-o>", "<Down>", { desc = "Move cursor down" })
+-- set_keymap("i", "<a-p>", "<Up>", { desc = "Move cursor up" })
+-- set_keymap("i", "<A-h>", "<Left>", { desc = "Move cursor left" })
+-- set_keymap("i", "<A-l>", "<Right>", { desc = "Move cursor right" })
+-- set_keymap("i", "<S-A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+-- set_keymap("i", "<S-A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
 set_keymap("i", "<C-d>", "<Del>", { desc = "Delete world front" })
-set_keymap("i", "<C-b>", "<Del>", { desc = "Delete world front" })
-set_keymap("i", "<C-e>", "<Del>", { desc = "Delete world front" })
 set_keymap("i", "<C-h>", "<Left>", { desc = "Move left" })
 set_keymap("i", "<C-l>", "<Right>", { desc = "Move right" })
 set_keymap("i", "<C-k>", "<Up>", { desc = "Move up" })
 set_keymap("i", "<C-j>", "<Down>", { desc = "Move down" })
-set_keymap("i", "<C-s>", "<Esc><cmd>w<CR>", { desc = "Save file" })
 set_keymap("i", "<C-p>", "", { desc = "Naitive autocmp" })
 set_keymap("i", "<C-n>", "", { desc = "Naitive autocmp" })
-set_keymap("i", "<M-p>", "<C-p>", { desc = "Naitive autocmp" })
-set_keymap("i", "<M-n>", "<C-n>", { desc = "Naitive autocmp" })
+set_keymap("i", "<A-p>", "<C-p>", { desc = "Naitive autocmp" })
+set_keymap("i", "<A-n>", "<C-n>", { desc = "Naitive autocmp" })
 
 -- Operator-pending mode keybindings
 set_keymap("o", "#", "^", { desc = "Start of line" })
@@ -193,13 +194,13 @@ set_keymap("n", "<leader>e", ":NvimTreeFindFile<CR>", { desc = "Find file in Nvi
 -- Comment
 set_keymap(
 	"n",
-	"<leader>/",
+	"<C-_>",
 	":lua require('Comment.api').toggle.linewise.current()<CR>",
 	{ desc = "Toggle comment (line)" }
 )
 set_keymap(
 	"v",
-	"<leader>/",
+	"<C-_>",
 	"<ESC>:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
 	{ desc = "Toggle comment (visual)" }
 )
@@ -283,8 +284,8 @@ set_keymap("n", "<leader>gd", "<CMD> DiffviewOpen <CR>", { desc = "Diffview open
 set_keymap("n", "<leader>gc", "<CMD> DiffviewClose <CR>", { desc = "Diffview close" })
 
 -- toggle term
-set_keymap("n", "<M-i>", "<CMD> 100ToggleTerm direction=float <CR>", { desc = "open float terminal" })
-set_keymap("t", "<M-i>", "<CMD> 100ToggleTerm direction=float <CR>", { desc = "open float terminal" })
+set_keymap("n", "<A-i>", "<CMD> 100ToggleTerm direction=float <CR>", { desc = "open float terminal" })
+set_keymap("t", "<A-i>", "<CMD> 100ToggleTerm direction=float <CR>", { desc = "open float terminal" })
 set_keymap("n", "<c-f>", "<CMD> 200ToggleTerm direction=horizontal <CR>", { desc = "open horizontal terminal" })
 set_keymap("t", "<c-f>", "<CMD> 200ToggleTerm direction=horizontal <CR>", { desc = "open horizontal terminal" })
 set_keymap("n", "\\v", "<CMD> 300ToggleTerm direction=vertical <CR>", { desc = "open vertical terminal" })
@@ -319,10 +320,10 @@ set_keymap("i", "<C-i>", '<Cmd> lua require("cmp").complete()<CR>', { desc = "op
 -- vim.api.nvim_set_keymap('n', '<leader>dr', ':lua require("dap").repl.open()<CR>', { silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>dl', ':lua require("dap").run_last()<CR>', { silent = true })
 
-set_keymap("n", "<M-r>", ":DapContinue<CR>", { desc = "DapContinue" })
+
+set_keymap("n", "<A-r>", ":DapContinue<CR>", { desc = "DapContinue" })
 set_keymap("n", "<F5>", ":DapRestartFrame<CR>", { desc = "DapRestartFrame" })
 set_keymap("n", "<F10>", ":DapStepOver<CR>", { desc = "DapStepOver" })
-set_keymap("n", "<M-u>", ":DapStepOver<CR>", { desc = "DapStepOver" })
 set_keymap("n", "<F11>", ":DapStepInto<CR>", { desc = "DapStepInto" })
 set_keymap("n", "<F12>", ":DapStepOut<CR>", { desc = "DapStepOut" })
 set_keymap("n", "\\db", ":DapToggleBreakpoint<CR>", { desc = "DapToggleBreakpoint" })
@@ -342,4 +343,4 @@ set_keymap("n", "\\dr", ":lua require('dap').repl.open()<CR>", { desc = "DapRepl
 set_keymap("n", "\\dl", ":lua require('dap').run_last()<CR>", { desc = "DapRunLast" })
 set_keymap("n", "\\dd", ":lua require('dapui').toggle()<CR>", { desc = "DapUiToggle" })
 set_keymap("n", "\\de", ":lua require('dapui').eval()<CR>", { desc = "DapUiEval" })
-set_keymap("n", "<M-o>", ":lua require('dapui').eval()<CR>", { desc = "DapUiEval" })
+-- set_keymap("n", "<A-o>", ":lua require('dapui').eval()<CR>", { desc = "DapUiEval" })

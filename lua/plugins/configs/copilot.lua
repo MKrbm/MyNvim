@@ -22,12 +22,12 @@ return function()
 				enabled = true,
 				auto_trigger = true,
 				keymap = {
-					accept = "<M-j>",
+					accept = "<A-o>",
 					accept_word = false,
 					accept_line = false,
-					next = "<M-n>",
-					prev = "<M-S-n>",
-					dismiss = "<C-]>",
+					next = "<A-S-n>",
+					prev = "<A-S-p>",
+					-- dismiss = "<C-]>",
 				},
 			},
 			filetypes = {

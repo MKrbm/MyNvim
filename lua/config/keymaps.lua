@@ -30,9 +30,9 @@ set_keymap("n", "<C-Up>", "<CMD>resize +2<CR>", { desc = "Increase window height
 set_keymap("n", "<C-Down>", "<CMD>resize -2<CR>", { desc = "Decrease window height" })
 set_keymap("n", "<C-Right>", "<CMD>vertical resize +2<CR>", { desc = "Increase window width" })
 set_keymap("n", "<C-Left>", "<CMD>vertical resize -2<CR>", { desc = "Decrease window width" })
-set_keymap("n", "<a-o>", "<CMD>tabprevious<CR>", { desc = "Previous tab" })
+set_keymap("n", "<A-p>", "<CMD>tabprevious<CR>", { desc = "Previous tab" })
 -- set_keymap("n", "<leader>j", "<CMD>tabprevious<CR>", { desc = "Previous tab" })
-set_keymap("n", "<a-p>", "<CMD>tabnext<CR>", { desc = "Next tab" })
+set_keymap("n", "<A-n>", "<CMD>tabnext<CR>", { desc = "Next tab" })
 -- set_keymap("n", "<leader>k", "<CMD>tabnext<CR>", { desc = "Next tab" })
 set_keymap("n", "\\n", "<CMD>tab split<CR>", { desc = "Open new tab" })
 set_keymap("n", "\\x", "<CMD>tabclose<CR>", { desc = "Close tab" })
@@ -60,16 +60,16 @@ set_keymap("n", '<A-w>', "a<CR><Esc>k$", { desc = "Insert new line above" })
 set_keymap("n", "q", "", { desc = "Unmap q" })
 set_keymap("n", "<leader>q", "q", { desc = "Original q functionality" })
 set_keymap("n", "<leader>2", "@", { desc = "Execute register" })
-set_keymap("n", "<S-A-o>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-set_keymap("n", "<S-A-p>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+set_keymap("n", "<S-A-p>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+set_keymap("n", "<S-A-n>", "<cmd>m .-2<cr>==", { desc = "Move up" })
 set_keymap("n", "zo", "za", { desc = "Toggle fold" })
 set_keymap("n", "zO", "zA", { desc = "Toggle all folds" })
 set_keymap("n", "za", "zo", { desc = "Open fold" })
 set_keymap("n", "zA", "zO", { desc = "Open all folds" })
 
 
-set_keymap({ "n", "v", "o" }, "<S-m>", "M", { desc = "Cursor middle" })
 set_keymap({ "n", "v", "o" }, "<S-h>", "H", { desc = "Cursor top" })
+set_keymap({ "n", "v", "o" }, "<S-m>", "M", { desc = "Cursor middle" })
 set_keymap({ "n", "v", "o" }, "<S-l>", "L", { desc = "Cursor bottom" })
 
 --extend operator-pending selection
@@ -124,8 +124,8 @@ set_keymap("t", "<C-j>", "<C-x><C-w>j", { desc = "Move to bottom split", remap =
 set_keymap("t", "<C-k>", "<C-x><C-w>k", { desc = "Move to top split", remap = true })
 set_keymap("t", "<C-e>", "<C-x><C-e>", { desc = "Scroll up", remap = true })
 set_keymap("t", "<C-y>", "<C-x><C-y>", { desc = "Scroll down", remap = true })
-set_keymap("t", "<a-o>", "<CMD>tabprevious<CR>", { noremap = true, desc = "<CMD>tabprevious<CR>" })
-set_keymap("t", "<a-p>", "<CMD>tabnext<CR>", { noremap = true, desc = "<CMD>tabnext<CR>" })
+set_keymap("t", "<A-p>", "<CMD>tabprevious<CR>", { noremap = true, desc = "<CMD>tabprevious<CR>" })
+set_keymap("t", "<A-n>", "<CMD>tabnext<CR>", { noremap = true, desc = "<CMD>tabnext<CR>" })
 
 -- Window resizing
 set_keymap("n", "<C-Up>", "<CMD>resize +2<CR>", { desc = "Height up" })
@@ -134,7 +134,7 @@ set_keymap("n", "<C-Down>", "<CMD>resize -2<CR>", { desc = "Height down" })
 -- Insert mode keybindings
 set_keymap("i", "<A-.>", "<C-t>", { desc = "Indent line" })
 set_keymap("i", "<A-,>", "<C-d>", { desc = "De-indent line" })
--- set_keymap("i", "<a-o>", "<Down>", { desc = "Move cursor down" })
+-- set_keymap("i", "<A-p>", "<Down>", { desc = "Move cursor down" })
 -- set_keymap("i", "<a-p>", "<Up>", { desc = "Move cursor up" })
 -- set_keymap("i", "<A-h>", "<Left>", { desc = "Move cursor left" })
 -- set_keymap("i", "<A-l>", "<Right>", { desc = "Move cursor right" })
@@ -343,4 +343,17 @@ set_keymap("n", "\\dr", ":lua require('dap').repl.open()<CR>", { desc = "DapRepl
 set_keymap("n", "\\dl", ":lua require('dap').run_last()<CR>", { desc = "DapRunLast" })
 set_keymap("n", "\\dd", ":lua require('dapui').toggle()<CR>", { desc = "DapUiToggle" })
 set_keymap("n", "\\de", ":lua require('dapui').eval()<CR>", { desc = "DapUiEval" })
--- set_keymap("n", "<A-o>", ":lua require('dapui').eval()<CR>", { desc = "DapUiEval" })
+-- set_keymap("n", "<A-p>", ":lua require('dapui').eval()<CR>", { desc = "DapUiEval" })
+
+set_keymap(
+	"n",
+	"<A-/>",
+	":lua require('Comment.api').toggle.linewise.current()<CR>",
+	{ desc = "Toggle comment (line)" }
+)
+set_keymap(
+	"v",
+	"<A-/>",
+	"<ESC>:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+	{ desc = "Toggle comment (visual)" }
+)

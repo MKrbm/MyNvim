@@ -22,7 +22,7 @@ return function()
 				enabled = true,
 				auto_trigger = true,
 				keymap = {
-					accept = "<A-o>",
+					accept = "<A-i>",
 					accept_word = false,
 					accept_line = false,
 					next = "<A-S-n>",

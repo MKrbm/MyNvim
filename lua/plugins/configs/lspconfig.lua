@@ -40,44 +40,77 @@ local python_folder = os.getenv("CONDA_PREFIX")
 local python_executable = python_folder .. "/bin/python"
 local pylsp_executable = python_folder .. "/bin/pylsp"
 
+print("python_folder: " .. python_folder)
+print("python_executable: " .. python_executable)
+print("pylsp_executable: " .. pylsp_executable)
+
 require("lspconfig").pylsp.setup({
-	cmd = { pylsp_executable, "--log-file", "/tmp/pylsp.log" },
+	cmd = { pylsp_executable, "--log-file", "/tmp/pyls.log" },
 	filetypes = { "python" },
 	settings = {
 		pylsp = {
-			configurationSources = { "pycodestyle" },
+			configurationSources = { "flake8" },
 			formatCommand = { "autopep8" },
 			plugins = {
-				-- Lint
-				pycodestyle = {
-					enabled = true,
-					maxLineLength = 100, -- default: 79
-					aggressive = 2,
-				},
-				mypy = {
-					enabled = true,
-					live_mode = false,
-					strict = true,
-					overrides = { "--python-executable", python_executable },
-				},
-				-- -- Code refactor
-				rope = { enabled = true }, -- This is a python refactoring library (refactor means renaming, extracting functions, ...)
-
-				pydocstyle = { -- n: make sure to install pydocstyle before using it
-					enabled = false, -- n: this is a python docstring style checker
-					convention = "google",
-				},
-
-				-- Formatting
+				-- formatter options
 				black = { enabled = false },
-				pyls_isort = { enabled = false },
+				autopep8 = { enabled = true },
 				yapf = { enabled = false },
-				autopep8 = { enabled = true, maxLineLength = 100 }, -- autopep8 is a python formatting library (it fixes the pycodestyle errors)
+				-- linter options
+				flake8 = { enabled = true },
+				pyflakes = { enabled = false },
+				pycodestyle = { enabled = false },
+				-- type checker
+				pylsp_mypy = {
+					enabled = true,
+					overrides = {
+						"--python-executable",
+						python_executable,
+						true
+					}
+				},
+				mypy = { enabled = false },
+				-- auto-completion options
+				jedi_completion = { fuzzy = false },
+				-- import sorting
+				pyls_isort = { enabled = false },
+				-- -- Lint
+				-- pycodestyle = {
+				-- 	enabled = false,
+				-- 	maxLineLength = 100, -- default: 79
+				-- 	aggressive = 2,
+				-- },
+				-- flake	= {
+				-- 	enabled = false,
+				-- 	maxLineLength = 100,
+				-- 	ignore = { "E501" },
+				-- },
+				-- mypy = {
+				-- 	enabled = false,
+				-- 	live_mode = false,
+				-- 	strict = true,
+				-- 	overrides = { "--python-executable", python_executable },
+				-- },
+				-- -- -- Code refactor
+				-- rope = { enabled = true }, -- This is a python refactoring library (refactor means renaming, extracting functions, ...)
+				--
+				-- pydocstyle = { -- n: make sure to install pydocstyle before using it
+				-- 	enabled = false, -- n: this is a python docstring style checker
+				-- 	convention = "google",
+				-- },
+				--
+				-- -- Formatting
+				-- black = { enabled = false },
+				-- pyls_isort = { enabled = false },
+				-- yapf = { enabled = false },
+				-- autopep8 = { enabled = true, maxLineLength = 100 }, -- autopep8 is a python formatting library (it fixes the pycodestyle errors)
 			},
-			log_file = "/tmp/pylsp.log",
 		},
-	},
+	}
+	-- 		-- log_file = "/tmp/pylsp.log",
+	-- 	},
 })
+-- })
 
 vim.diagnostic.config({
 	underline = false,

@@ -7,7 +7,8 @@ local set_cs = function(colorscheme)
 	}
 
 	M.hl.Normal = {
-		bg = colorscheme.Normal,
+		-- bg = colorscheme.Normal,
+		bg = "none",
 		fg = "white"
 	}
 
@@ -33,21 +34,76 @@ local set_cs = function(colorscheme)
 		fg = "red",
 	}
 
-	-- if TabLine then apply the color
-	if colorscheme.TabLine then
-		M.hl.TabLine = {
-			fg = colorscheme.TabLine,
-			-- fg = "white",
-		}
-	end
 
-	-- if TabLineFill then apply the color
-	if colorscheme.TabLineSel then
-		M.hl.TabLineSel = {
-			fg = colorscheme.TabLineSel,
-			-- fg = "white",
-		}
-	end
+	-- To make the background transparent
+
+	-- M.hl.Normal = {
+	-- 	bg = "none",
+	-- }
+
+	M.hl.NormalNC = {
+		bg = "none",
+	}
+
+	M.hl.NvimTreeNormal = {
+		bg = "none",
+	}
+
+	M.hl.NvimTreeNormalNC = {
+		bg = "none",
+	}
+
+	M.hl.SignColumn = {
+		bg = "none",
+	}
+
+	M.hl.LineNr = {
+		bg = "none",
+		fg = "DarkGrey"
+	}
+
+	M.hl.TabLineSel = {
+		bg = colorscheme.NormalNC,
+		italic = true,
+	}
+	-- --
+	M.hl.TabLine = {
+		bg = "none",
+		fg = "Grey"
+	}
+
+	-- M.hl.StatusLine = {
+	-- 	bg = "none",
+	-- }
+	--
+	-- M.hl.StatusLineNC = {
+	-- 	bg = "none",
+	-- }
+
+	M.hl.TabLineFill = {
+		bg = "none",
+	}
+
+	-- End of transparent background
+
+	-- if TabLine then apply the color
+	-- if colorscheme.TabLine then
+	-- 	M.hl.TabLine = {
+	-- 		fg = colorscheme.TabLine,
+	-- 		bg = "none",
+	-- 		-- fg = "white",
+	-- 	}
+	-- end
+	--
+	-- -- if TabLineFill then apply the color
+	-- if colorscheme.TabLineSel then
+	-- 	M.hl.TabLineSel = {
+	-- 		fg = colorscheme.TabLineSel,
+	-- 		bg = "none",
+	-- 		-- fg = "white",
+	-- 	}
+	-- end
+
 end
 
 local everforest = {

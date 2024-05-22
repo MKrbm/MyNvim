@@ -63,6 +63,7 @@ opt.mouse = "a" --- Enable the use of the mouse
 
 -- Numbers
 opt.number = true --- Print the line number in front of each line
+opt.relativenumber = true --- Print the line number of the cursor line relative to the cursor line
 opt.numberwidth = 2 --- Number of columns used for line numbers
 opt.ruler = false --- Show the cursor position all the time
 
@@ -97,6 +98,17 @@ vim.api.nvim_exec([[
     augroup NvimTreeCursorColumn
         autocmd!
         autocmd FileType NvimTree setlocal nocursorcolumn
+    augroup END
+
+    augroup NvimTreeCursorColumn
+        autocmd!
+        autocmd FileType NvimTree setlocal nocursorcolumn
+    augroup END
+
+    augroup TerminalMode
+        autocmd!
+        autocmd BufWinEnter,WinEnter term://* startinsert
+        autocmd BufLeave term://* stopinsert
     augroup END
 ]], false)
 

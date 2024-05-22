@@ -1,5 +1,5 @@
 local options = {
-	ensure_installed = { "lua", "c", "cpp", "python", "markdown", "markdown_inline", "bash" },
+	ensure_installed = { "lua", "c", "cpp", "python", "markdown", "markdown_inline", "bash", "julia" },
 	highlight = {
 		enable = true,
 		use_languagetree = true,

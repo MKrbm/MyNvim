@@ -40,6 +40,8 @@ local sources = {
 	-- latex
 	b.formatting.latexindent,
 
+	-- julia
+	-- b.formatting.jupytext,
 	-- Python
 	-- b.diagnostics.mypy.with({
 	-- 	extra_args = function()

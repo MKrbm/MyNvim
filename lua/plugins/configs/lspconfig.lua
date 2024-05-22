@@ -112,6 +112,9 @@ require("lspconfig").pylsp.setup({
 })
 -- })
 
+require("lspconfig").julials.setup({})
+
+
 vim.diagnostic.config({
 	underline = false,
 	-- virtual_text = {

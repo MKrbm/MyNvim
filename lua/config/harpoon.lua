@@ -42,7 +42,7 @@ M = {
         nowait = true,
       },
       {
-        "<M-1>",
+        "<leader>1",
         function()
           require("harpoon.ui").nav_file(1)
         end,
@@ -50,7 +50,7 @@ M = {
         nowait = true,
       },
       {
-        "<M-2>",
+        "<leader>2",
         function()
           require("harpoon.ui").nav_file(2)
         end,
@@ -58,7 +58,7 @@ M = {
         nowait = true,
       },
       {
-        "<M-3>",
+        "<leader>3",
         function()
           require("harpoon.ui").nav_file(3)
         end,
@@ -66,7 +66,7 @@ M = {
         nowait = true,
       },
       {
-        "<M-4>",
+        "<leader>4",
         function()
           require("harpoon.ui").nav_file(4)
         end,

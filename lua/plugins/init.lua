@@ -129,7 +129,7 @@ return {
 		init = function()
 			vim.g.loaded_netrw = 1
 			vim.g.loaded_netrwPlugin = 1
-			vim.opt.termguicolors = true
+			-- vim.opt.termguicolors = true
 		end,
 		opts = function()
 			local opt = require("plugins/configs/nvimtree")
@@ -208,14 +208,14 @@ return {
 			-- },
 		},
 	},
-	{
-		"chipsenkbeil/distant.nvim",
-		branch = "v0.3",
-		lazy = false,
-		config = function()
-			require("distant"):setup()
-		end,
-	},
+	-- {
+	-- 	"chipsenkbeil/distant.nvim",
+	-- 	branch = "v0.3",
+	-- 	lazy = false,
+	-- 	config = function()
+	-- 		require("distant"):setup()
+	-- 	end,
+	-- },
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
@@ -372,7 +372,7 @@ return {
 				"hrsh7th/cmp-nvim-lsp",
 				"hrsh7th/cmp-buffer",
 				"hrsh7th/cmp-path",
-				"hrsh7th/cmp-cmdline",
+				-- "hrsh7th/cmp-cmdline",
 			},
 		},
 		opts = function()

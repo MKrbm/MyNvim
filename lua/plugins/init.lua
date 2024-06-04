@@ -431,6 +431,10 @@ return {
 		},
 	},
 	{
+		"tpope/vim-fugitive",
+		lazy = false,
+	},
+	{
 		"iamcco/markdown-preview.nvim",
 		ft = { "markdown" },
 		build = ":call mkdp#util#install()",

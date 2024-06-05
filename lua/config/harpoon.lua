@@ -3,7 +3,7 @@ local M = {}
 
 M = {
       {
-        "<leader>a",
+        "<space><space>",
         function()
           require("harpoon.mark").add_file()
         end,

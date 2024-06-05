@@ -27,7 +27,7 @@ set_keymap("n", "\\q", "<CMD>bd<CR>", { desc = "Quit buffer" })
 set_keymap("n", "<leader>sh", "<CMD>sp<CR>", { desc = "Split window horizontally" })
 set_keymap("n", "<leader>sv", "<CMD>vs<CR>", { desc = "Split window vertically" })
 set_keymap("n", "<C-Up>", "<CMD>resize +2<CR>", { desc = "Increase window height" })
-set_keymap("n", "<C-Down>", "<CMD>resize -2<CR>", { desc = "Decrease window height" })
+-- set_keymap("n", "<C-Down>", "<CMD>resize -2<CR>", { desc = "Decrease window height" })
 set_keymap("n", "<C-Right>", "<CMD>vertical resize +2<CR>", { desc = "Increase window width" })
 set_keymap("n", "<C-Left>", "<CMD>vertical resize -2<CR>", { desc = "Decrease window width" })
 set_keymap("n", "<A-k>", "<CMD>tabnext<CR>", { desc = "Previous tab" })
@@ -357,3 +357,5 @@ set_keymap(
 	"<ESC>:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
 	{ desc = "Toggle comment (visual)" }
 )
+
+

@@ -22,7 +22,7 @@ set_keymap("n", "#", "^", { desc = "Go to start of line" })
 set_keymap("n", "^", "#", { desc = "Search for word under cursor" })
 set_keymap({ "n", "v" }, "<leader>[", "gg", { desc = "Go to top of file" })
 set_keymap({ "n", "v" }, "<leader>]", "G", { desc = "Go to end of file" })
-set_keymap("n", "<A-q>", "<CMD>q<CR>", { desc = "Quit current window" })
+set_keymap("n", "<C-q>", "<CMD>q<CR>", { desc = "Quit current window" })
 set_keymap("n", "\\q", "<CMD>bd<CR>", { desc = "Quit buffer" })
 set_keymap("n", "<leader>sh", "<CMD>sp<CR>", { desc = "Split window horizontally" })
 set_keymap("n", "<leader>sv", "<CMD>vs<CR>", { desc = "Split window vertically" })
@@ -359,3 +359,4 @@ set_keymap(
 )
 
 
+-- test

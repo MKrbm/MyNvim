@@ -415,23 +415,26 @@ return {
 		"tpope/vim-surround",
 		lazy = false,
 	},
-	{
-		"sindrets/diffview.nvim",
-		lazy = true,
-		cmd = { "DiffviewOpen", "DiffviewClose" },
-		opts = {
-			view = {
-				default = {
-					layout = "diff2_vertical",
-				},
-				merge_tool = {
-					layout = "diff3_mixed",
-				},
-			},
-		},
-	},
+	-- {
+	-- 	"sindrets/diffview.nvim",
+	-- 	lazy = true,
+	-- 	cmd = { "DiffviewOpen", "DiffviewClose" },
+	-- 	opts = {
+	-- 		view = {
+	-- 			default = {
+	-- 				layout = "diff2_vertical",
+	-- 			},
+	-- 			merge_tool = {
+	-- 				layout = "diff3_mixed",
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 	{
 		"tpope/vim-fugitive",
+		config = function()
+			require("plugins/configs/fugitive")
+		end,
 		lazy = false,
 	},
 	{

@@ -2,7 +2,6 @@ vim.keymap.set("n", "<leader>gs", function()
   vim.cmd.Git()
   vim.cmd.only()
 end)
-
 local ThePrimeagen_Fugitive = vim.api.nvim_create_augroup("ThePrimeagen_Fugitive", {})
 
 local autocmd = vim.api.nvim_create_autocmd

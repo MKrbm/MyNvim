@@ -37,7 +37,7 @@ local shell_config = function()
     print("windows are not supported")
   end
   if global.is_linux then
-    opt.shell = "/bin/bash"
+    opt.shell = "/bin/zsh"
   end
   if global.is_mac then
     opt.shell = "/bin/zsh"

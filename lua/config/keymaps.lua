@@ -347,13 +347,13 @@ set_keymap("n", "\\de", ":lua require('dapui').eval()<CR>", { desc = "DapUiEval"
 
 set_keymap(
 	"n",
-	"<A-/>",
+	"<C-/>",
 	":lua require('Comment.api').toggle.linewise.current()<CR>",
 	{ desc = "Toggle comment (line)" }
 )
 set_keymap(
 	"v",
-	"<A-/>",
+	"<C-/>",
 	"<ESC>:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
 	{ desc = "Toggle comment (visual)" }
 )

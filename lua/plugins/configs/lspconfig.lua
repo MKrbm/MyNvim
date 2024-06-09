@@ -57,7 +57,7 @@ require("lspconfig").pylsp.setup({
 				autopep8 = { enabled = true },
 				yapf = { enabled = false },
 				-- linter options
-				flake8 = { enabled = true },
+				flake8 = { enabled = true, maxLineLength = 100},
 				pyflakes = { enabled = false },
 				pycodestyle = { enabled = false },
 				-- type checker

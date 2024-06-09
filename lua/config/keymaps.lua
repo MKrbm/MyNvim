@@ -289,10 +289,9 @@ set_keymap("t", "<A-i>", "<CMD> 100ToggleTerm direction=float <CR>", { desc = "o
 set_keymap("n", "<c-f>", "<CMD> 200ToggleTerm direction=horizontal <CR>", { desc = "open horizontal terminal" })
 set_keymap("t", "<c-f>", "<CMD> 200ToggleTerm direction=horizontal <CR>", { desc = "open horizontal terminal" })
 set_keymap("n", "\\v", "<CMD> 300ToggleTerm direction=vertical <CR>", { desc = "open vertical terminal" })
-set_keymap("t", "\\v", "<CMD> 300ToggleTerm direction=vertical <CR>", { desc = "open vertical terminal" })
 
 -- cmake
-set_keymap("n", "\\g", "<CMD> CMakeGenerate <CR>", { desc = "generate cmake" })
+set_keymap("n", "\\gg", "<CMD> CMakeGenerate <CR>", { desc = "generate cmake" })
 set_keymap("n", "\\b", "<CMD> CMakeBuild <CR>", { desc = "build cmake" })
 set_keymap("n", "\\cc", "<CMD> CMakeClose <CR>", { desc = "close cmake " })
 set_keymap("n", "\\cs", "<CMD> CMakeStop <CR>", { desc = "stop cmake " })
@@ -359,4 +358,3 @@ set_keymap(
 )
 
 
--- test

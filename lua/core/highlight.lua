@@ -84,6 +84,11 @@ local set_cs = function(colorscheme)
 		bg = "none",
 	}
 
+	M.hl.Comment = {
+		-- bg = "red",
+		fg = "#7B7C84",
+	}
+
 	-- End of transparent background
 
 	-- if TabLine then apply the color
@@ -137,6 +142,8 @@ M.setup = function()
 	for group, styles in pairs(M.hl) do
 		set_hl_group(group, styles)
 	end
+	vim.api.nvim_set_hl(0, "@comment", { link = "Comment"})
+	vim.api.nvim_set_hl(0, "@punctuation.bracket", { link = "Comment"})
 end
 
 M.hl = {

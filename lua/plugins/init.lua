@@ -264,32 +264,32 @@ return {
 		"numToStr/Comment.nvim",
 		keys = {
 			{
-				"\\\\gcc",
+				"\\gcc",
 				mode = "n",
 				desc = "Comment toggle current line",
 			},
 			{
-				"\\\\gc",
+				"\\gc",
 				mode = { "n", "o" },
 				desc = "Comment toggle linewise",
 			},
 			{
-				"\\\\gc",
+				"\\gc",
 				mode = "x",
 				desc = "Comment toggle linewise (visual)",
 			},
 			{
-				"\\\\gbc",
+				"\\gbc",
 				mode = "n",
 				desc = "Comment toggle current block",
 			},
 			{
-				"\\\\gb",
+				"\\gb",
 				mode = { "n", "o" },
 				desc = "Comment toggle blockwise",
 			},
 			{
-				"\\\\gb",
+				"\\gb",
 				mode = "x",
 				desc = "Comment toggle blockwise (visual)",
 			},

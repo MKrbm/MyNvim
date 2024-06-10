@@ -104,12 +104,10 @@ vim.api.nvim_exec([[
         autocmd!
         autocmd FileType NvimTree setlocal nocursorcolumn
     augroup END
-
-    augroup TerminalMode
-        autocmd!
-        autocmd BufWinEnter,WinEnter term://* startinsert
-        autocmd BufLeave term://* stopinsert
-    augroup END
+		augroup TerminalMode
+				autocmd!
+				autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
+		augroup END
 ]], false)
 
 vim.cmd [[

@@ -40,9 +40,9 @@ local python_folder = os.getenv("CONDA_PREFIX")
 local python_executable = python_folder .. "/bin/python"
 local pylsp_executable = python_folder .. "/bin/pylsp"
 
-print("python_folder: " .. python_folder)
-print("python_executable: " .. python_executable)
-print("pylsp_executable: " .. pylsp_executable)
+-- print("python_folder: " .. python_folder)
+-- print("python_executable: " .. python_executable)
+-- print("pylsp_executable: " .. pylsp_executable)
 
 require("lspconfig").pylsp.setup({
 	cmd = { pylsp_executable, "--log-file", "/tmp/pyls.log" },
@@ -50,11 +50,11 @@ require("lspconfig").pylsp.setup({
 	settings = {
 		pylsp = {
 			configurationSources = { "flake8" },
-			formatCommand = { "autopep8" },
+			formatCommand = { "black" },
 			plugins = {
 				-- formatter options
-				black = { enabled = false },
-				autopep8 = { enabled = true },
+				black = { enabled = true },
+				autopep8 = { enabled = false },
 				yapf = { enabled = false },
 				-- linter options
 				flake8 = { enabled = true, maxLineLength = 100},

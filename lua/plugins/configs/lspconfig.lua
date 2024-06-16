@@ -42,9 +42,10 @@ if vim.fn.exepath("python3") == "" then
 else
 	print("Python found")
 end
-PYTHON_FOLDER = vim.fn.exepath('python3')
-local python_executable = PYTHON_FOLDER .. "/bin/python"
-local pylsp_executable = PYTHON_FOLDER .. "/bin/pylsp"
+python_executable = vim.fn.exepath('python3')
+pylsp_executable = vim.fn.exepath('pylsp')
+print("Python executable: " .. python_executable)
+print("Pylsp executable: " .. pylsp_executable)
 
 
 require("lspconfig").pylsp.setup({

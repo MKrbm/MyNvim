@@ -36,13 +36,16 @@ require("lspconfig").clangd.setup({
 	},
 })
 
-local python_folder = os.getenv("CONDA_PREFIX")
-local python_executable = python_folder .. "/bin/python"
-local pylsp_executable = python_folder .. "/bin/pylsp"
 
--- print("python_folder: " .. python_folder)
--- print("python_executable: " .. python_executable)
--- print("pylsp_executable: " .. pylsp_executable)
+if vim.fn.exepath("python3") == "" then
+	print("Python not found")
+else
+	print("Python found")
+end
+PYTHON_FOLDER = vim.fn.exepath('python3')
+local python_executable = PYTHON_FOLDER .. "/bin/python"
+local pylsp_executable = PYTHON_FOLDER .. "/bin/pylsp"
+
 
 require("lspconfig").pylsp.setup({
 	cmd = { pylsp_executable, "--log-file", "/tmp/pyls.log" },
@@ -57,7 +60,7 @@ require("lspconfig").pylsp.setup({
 				autopep8 = { enabled = false },
 				yapf = { enabled = false },
 				-- linter options
-				flake8 = { enabled = true, maxLineLength = 100},
+				flake8 = { enabled = true, maxLineLength = 100 },
 				pyflakes = { enabled = false },
 				pycodestyle = { enabled = false },
 				-- type checker

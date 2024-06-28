@@ -280,8 +280,8 @@ set_keymap("o", "gw", "<cmd> HopWordMW <CR>", { silent = true, noremap = true, d
 set_keymap("o", "gs", "<cmd> HopChar1MW <CR>", { silent = true, noremap = true, desc = "nvim-hop char1" })
 
 --diffview
-set_keymap("n", "<leader>gd", "<CMD> DiffviewOpen <CR>", { desc = "Diffview open" })
-set_keymap("n", "<leader>gc", "<CMD> DiffviewClose <CR>", { desc = "Diffview close" })
+-- set_keymap("n", "<leader>gd", "<CMD> DiffviewOpen <CR>", { desc = "Diffview open" })
+-- set_keymap("n", "<leader>gc", "<CMD> DiffviewClose <CR>", { desc = "Diffview close" })
 
 -- toggle term
 set_keymap("n", "<A-i>", "<CMD> 100ToggleTerm direction=float <CR>", { desc = "open float terminal" })

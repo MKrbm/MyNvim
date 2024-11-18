@@ -16,7 +16,6 @@ require("lspconfig").lua_ls.setup({
 	},
 })
 
-
 require("lspconfig").bashls.setup({})
 
 require("lspconfig").texlab.setup({})
@@ -36,33 +35,34 @@ require("lspconfig").clangd.setup({
 	},
 })
 
-
 if vim.fn.exepath("python3") == "" then
 	print("Python not found")
 else
 	print("Python found")
 end
-python_executable = vim.fn.exepath('python3')
-pylsp_executable = vim.fn.exepath('pylsp')
+python_executable = vim.fn.exepath("python")
+pylsp_executable = vim.fn.exepath("pylsp")
 print("Python executable: " .. python_executable)
 print("Pylsp executable: " .. pylsp_executable)
-
 
 require("lspconfig").pylsp.setup({
 	cmd = { pylsp_executable, "--log-file", "/tmp/pyls.log" },
 	filetypes = { "python" },
 	settings = {
 		pylsp = {
-			configurationSources = { "flake8" },
+			-- configurationSources = { "ruff" },
 			formatCommand = { "black" },
 			plugins = {
 				-- formatter options
 				black = { enabled = true },
 				autopep8 = { enabled = false },
 				yapf = { enabled = false },
+				ruff = { enabled = false },
+
 				-- linter options
 				flake8 = { enabled = true, maxLineLength = 100 },
 				pyflakes = { enabled = false },
+
 				pycodestyle = { enabled = false },
 				-- type checker
 				pylsp_mypy = {
@@ -70,8 +70,8 @@ require("lspconfig").pylsp.setup({
 					overrides = {
 						"--python-executable",
 						python_executable,
-						true
-					}
+						true,
+					},
 				},
 				mypy = { enabled = false },
 				-- auto-completion options
@@ -110,14 +110,13 @@ require("lspconfig").pylsp.setup({
 				-- autopep8 = { enabled = true, maxLineLength = 100 }, -- autopep8 is a python formatting library (it fixes the pycodestyle errors)
 			},
 		},
-	}
+	},
 	-- 		-- log_file = "/tmp/pylsp.log",
 	-- 	},
 })
 -- })
 
 require("lspconfig").julials.setup({})
-
 
 vim.diagnostic.config({
 	underline = false,

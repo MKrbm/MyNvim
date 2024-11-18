@@ -39,7 +39,7 @@ set_keymap("n", "\\x", "<CMD>tabclose<CR>", { desc = "Close tab" })
 set_keymap("n", "<S-j>", "<CMD>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
 set_keymap("n", "<S-k>", "<CMD>BufferLineCycleNext<CR>", { desc = "Next buffer" })
 set_keymap("n", "\\k", "<S-k>", { desc = "Shifted up key binding" })
-set_keymap(
+set_keymap( 
 	"n",
 	"<leader>su",
 	'<Cmd>lua require("which-key").show("z=", {mode = "n", auto = true})<CR>',
@@ -53,10 +53,10 @@ set_keymap("n", "<leader>xa", ":wa<CR>:qa<CR>", { desc = "Save all and quit" })
 set_keymap("n", "\\t", "<CMD>terminal<CR>", { desc = "Open terminal" })
 set_keymap("n", "<A-e>", "j<C-e>", { desc = "Move down and scroll" })
 set_keymap("n", "<A-y>", "k<C-y>", { desc = "Move up and scroll" })
--- set_keymap("n", "<leader>j", "<S-j>", { desc = "Shifted down key binding" })
--- set_keymap("n", "<leader>k", "a<CR><Esc>k$", { desc = "Insert new line above" })
-set_keymap("n", "<A-s>", "<S-j>", { desc = "Shifted down key binding" })
-set_keymap("n", '<A-w>', "a<CR><Esc>k$", { desc = "Insert new line above" })
+set_keymap("n", "<leader>j", "<S-j>", { desc = "Shifted down key binding" })
+set_keymap("n", "<leader>k", "a<CR><Esc>k$", { desc = "Insert new line above" })
+-- set_keymap("n", "<A-s>", "<S-j>", { desc = "Shifted down key binding" })
+-- set_keymap("n", '<A-w>', "a<CR><Esc>k$", { desc = "Insert new line above" })
 -- set_keymap("n", "q", "", { desc = "Unmap q" })
 set_keymap("n", "<leader>q", "q", { desc = "Original q functionality" })
 set_keymap("n", "<leader>2", "@", { desc = "Execute register" })

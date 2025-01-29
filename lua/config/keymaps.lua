@@ -56,7 +56,7 @@ set_keymap("n", "<A-y>", "k<C-y>", { desc = "Move up and scroll" })
 -- set_keymap("n", "<leader>j", "<S-j>", { desc = "Shifted down key binding" })
 -- set_keymap("n", "<leader>k", "a<CR><Esc>k$", { desc = "Insert new line above" })
 set_keymap("n", "<A-s>", "<S-j>", { desc = "Shifted down key binding" })
-set_keymap("n", '<A-w>', "a<CR><Esc>k$", { desc = "Insert new line above" })
+set_keymap("n", "<A-w>", "a<CR><Esc>k$", { desc = "Insert new line above" })
 -- set_keymap("n", "q", "", { desc = "Unmap q" })
 set_keymap("n", "<leader>q", "q", { desc = "Original q functionality" })
 set_keymap("n", "<leader>2", "@", { desc = "Execute register" })
@@ -66,7 +66,6 @@ set_keymap("n", "zo", "za", { desc = "Toggle fold" })
 set_keymap("n", "zO", "zA", { desc = "Toggle all folds" })
 set_keymap("n", "za", "zo", { desc = "Open fold" })
 set_keymap("n", "zA", "zO", { desc = "Open all folds" })
-
 
 set_keymap({ "n", "v", "o" }, "<S-h>", "H", { desc = "Cursor top" })
 set_keymap({ "n", "v", "o" }, "<S-m>", "M", { desc = "Cursor middle" })
@@ -98,7 +97,6 @@ set_keymap("o", "as", "a'", { desc = "Around single quotes", noremap = true, sil
 set_keymap("o", "ik", "iB", { desc = "Inner {}" })
 set_keymap("o", "ak", "aB", { desc = "Around {}" })
 set_keymap({ "n", "v" }, "vav", "ggVG", { desc = "Select all" })
-
 
 -- Visual mode keybindings
 -- vim.api.nvim_set_keymap('v', 'p', 'P', { noremap = true })
@@ -319,7 +317,6 @@ set_keymap("i", "<C-i>", '<Cmd> lua require("cmp").complete()<CR>', { desc = "op
 -- vim.api.nvim_set_keymap('n', '<leader>dr', ':lua require("dap").repl.open()<CR>', { silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>dl', ':lua require("dap").run_last()<CR>', { silent = true })
 
-
 set_keymap("n", "<A-r>", ":DapContinue<CR>", { desc = "DapContinue" })
 set_keymap("n", "<F5>", ":DapRestartFrame<CR>", { desc = "DapRestartFrame" })
 set_keymap("n", "<F10>", ":DapStepOver<CR>", { desc = "DapStepOver" })
@@ -356,5 +353,3 @@ set_keymap(
 	"<ESC>:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
 	{ desc = "Toggle comment (visual)" }
 )
-
-

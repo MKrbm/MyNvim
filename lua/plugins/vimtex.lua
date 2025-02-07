@@ -1,3 +1,5 @@
+local global = require("core.global")
+
 return {
 
     {

@@ -1,5 +1,8 @@
 local options = {
-	ensure_installed = { "lua", "c", "cpp", "python", "markdown", "markdown_inline", "bash", "julia" },
+	ensure_installed = {
+		"vimdoc", 
+		"luadoc",
+		"lua", "c", "cpp", "python", "markdown", "markdown_inline", "bash", "julia", "query" },
 	highlight = {
 		enable = true,
 		use_languagetree = true,
